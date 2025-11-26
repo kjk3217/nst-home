@@ -26,8 +26,9 @@ const EffectivenessSection: React.FC = () => {
             viewport={{ once: true }}
             className="relative"
           >
+            {/* [수정 1] 배지 텍스트 변경: 2025 WINNER -> 2025 대한민국 환경부 대상 */}
             <div className="absolute -top-6 -left-6 z-20 bg-yellow-500 text-white font-bold px-4 py-2 rounded shadow-lg">
-              2025 WINNER
+              2025 대한민국 환경부 대상
             </div>
             <img 
               src={ASSETS.awards} 
@@ -51,24 +52,33 @@ const EffectivenessSection: React.FC = () => {
               NST공법은 국가 공인기관 및 환경부 교차검증을 통과하여, 포름알데히드 및 VOCs 등의 유해물질을 획기적으로 저감합니다.
             </p>
 
-            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg h-[400px]">
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart
-                  data={data}
-                  margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
-                >
-                  <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
-                  <XAxis dataKey="name" tick={{fill: '#6b7280'}} axisLine={false} tickLine={false} />
-                  <YAxis hide />
-                  <Tooltip 
-                    cursor={{fill: 'transparent'}}
-                    contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}}
-                  />
-                  <Bar dataKey="before" name="시공 전" fill="#e2e8f0" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="after" name="NST 공법 시공 후" fill="#00a99d" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-              <div className="flex justify-center gap-8 mt-4">
+            {/* [수정 2] 차트 컨테이너 레이아웃 개선 
+                - h-[400px] -> h-[450px]로 높이 확보
+                - flex flex-col 적용하여 내부 요소 정렬
+            */}
+            <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-lg h-[450px] flex flex-col">
+              {/* 차트 영역이 남은 공간을 모두 차지하도록 flex-1 적용 */}
+              <div className="flex-1 w-full min-h-0">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={data}
+                    margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
+                    <XAxis dataKey="name" tick={{fill: '#6b7280'}} axisLine={false} tickLine={false} />
+                    <YAxis hide />
+                    <Tooltip 
+                      cursor={{fill: 'transparent'}}
+                      contentStyle={{borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}}
+                    />
+                    <Bar dataKey="before" name="시공 전" fill="#e2e8f0" radius={[4, 4, 0, 0]} />
+                    <Bar dataKey="after" name="NST 공법 시공 후" fill="#00a99d" radius={[4, 4, 0, 0]} />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+              
+              {/* 범례 영역: shrink-0으로 크기 고정 및 상단 마진 유지 */}
+              <div className="flex justify-center gap-8 mt-4 shrink-0">
                 <div className="flex items-center gap-2">
                    <div className="w-3 h-3 rounded-full bg-slate-200"></div>
                    <span className="text-sm text-gray-500">시공 전</span>
