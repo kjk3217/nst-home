@@ -18,7 +18,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${ASSETS.heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60 md:bg-gradient-to-r md:from-nst-dark/90 md:via-nst-dark/60 md:to-transparent" />
+        {/* 모바일 가독성을 위해 오버레이 진하기 조정 (from-black/30 -> from-black/50) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 md:bg-gradient-to-r md:from-nst-dark/90 md:via-nst-dark/60 md:to-transparent" />
       </div>
 
       <div className="container mx-auto px-6 md:px-6 z-10 grid md:grid-cols-2 gap-12 items-center h-full pt-20 pb-10">
@@ -31,73 +32,69 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           className="text-white flex flex-col justify-center h-full md:block"
         >
           {/* Badge & Sublabel */}
-          <div className="flex items-center gap-3 mb-6 md:mb-6">
-            <span className="bg-amber-500 text-white font-bold px-4 py-1.5 rounded-full text-xs md:text-sm shadow-md">
+          <div className="flex items-center gap-3 mb-8 md:mb-6">
+            <span className="bg-amber-500 text-white font-bold px-3 py-1 rounded-full text-[11px] md:text-sm shadow-md tracking-wide">
               SINCE 2009
             </span>
-            <span className="text-nst-teal md:text-nst-teal text-white/90 font-medium tracking-wide text-xs md:text-sm">
+            <span className="text-[#00a99d] md:text-nst-teal font-medium tracking-tight text-sm md:text-sm">
               새집증후군 개선 토탈 솔루션
             </span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-[2.5rem] md:text-6xl font-bold leading-[1.2] mb-4 md:mb-6">
+          {/* 모바일 폰트 사이즈 대폭 확대 (text-5xl), 행간 조절 (leading-tight) */}
+          <h1 className="text-5xl md:text-6xl font-bold leading-[1.1] mb-6 md:mb-6 tracking-tight">
             대형 건설사가<br />
             검증하고<br />
             선택한, NST
           </h1>
           
           {/* Sub Headline with Colors */}
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 leading-tight">
-            <span className="text-[#4ade80]">20년 노하우</span>의<br className="md:hidden" />
-            친환경 <span className="text-amber-400">NST 공법</span>
+          {/* 레퍼런스 이미지와 같이 줄바꿈 및 색상 강조 적용 */}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 leading-snug">
+            <span className="text-[#4ade80]">20년 노하우</span>의<br />
+            친환경 <span className="text-amber-400 border-b-2 border-amber-400/50 pb-1">NST 공법</span>
           </h2>
 
           {/* Description */}
-          <p className="text-gray-200 text-base md:text-xl max-w-lg mb-8 md:mb-10 leading-relaxed font-light">
+          <p className="text-gray-200 text-base md:text-xl max-w-lg mb-10 md:mb-10 leading-relaxed font-light opacity-90">
             새집증후군 개선의 원조 기술이자 표준 기술.<br />
             NST공법이 고객님의 건강하고 쾌적한 주거<br className="md:hidden" /> 환경을 설계합니다.
           </p>
 
-          {/* Buttons Area - Mobile: Stacked Bottom, Desktop: Row */}
-          <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full md:w-auto mt-8 md:mt-0">
+          {/* Buttons Area - Mobile: Stacked & Full Width */}
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full md:w-auto mt-4 md:mt-0">
             <button 
               onClick={onNavigateRecruit}
-              className="w-full md:w-auto bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-transform transform hover:scale-105 text-center"
+              className="w-full md:w-auto bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-transform transform hover:scale-105 text-center text-lg"
             >
               신규 사업자 모집
             </button>
             <button 
               onClick={onNavigateBranches}
-              className="w-full md:w-auto border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-colors text-center"
+              className="w-full md:w-auto border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-colors text-center text-lg"
             >
               전국 시공 지사 안내
             </button>
           </div>
         </MotionDiv>
 
-        {/* Right: Floating Badges / 3D Element */}
+        {/* Right: Floating Badges / 3D Element (Desktop Only) */}
         <MotionDiv 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          // [수정] items-end(우측 정렬) 유지, gap-6 (원래 간격으로 복원)
           className="hidden md:flex flex-col items-end gap-6"
         >
           {/* Award Badge */}
           <MotionDiv 
             whileHover={{ scale: 1.05 }}
-            // [수정] p-6, max-w-sm (원래 크기로 복원)
             className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-6 rounded-r-lg w-full max-w-sm"
           >
-            {/* [수정] gap-4 (원래 간격으로 복원) */}
             <div className="flex items-center gap-4 text-white">
-              {/* [수정] w-10 h-10 (원래 아이콘 크기로 복원) */}
               <Award className="text-yellow-400 w-10 h-10" />
               <div>
-                {/* [수정] text-lg (원래 폰트 크기로 복원) */}
                 <h3 className="font-bold text-lg">2025 Winner</h3>
-                {/* [수정] text-sm (원래 폰트 크기로 복원) */}
                 <p className="text-sm text-gray-300">대한민국 환경 대상 수상</p>
               </div>
             </div>
