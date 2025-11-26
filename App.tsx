@@ -51,16 +51,12 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    // [핵심 수정] overflow-x-hidden 추가:
+    // 전체 레이아웃의 가로 넘침을 강제로 숨겨서, 화면 너비를 모바일 기기 너비에 딱 맞춥니다.
+    // 이렇게 하면 Hero 컴포넌트의 '중앙(left-1/2)' 계산이 정확해져서 화살표가 정중앙에 오게 됩니다.
+    <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar onNavigateHome={() => setCurrentPage('home')} />
       <main>
-        {/* Hero is always visible but might behave differently or just serve as entry. 
-            However, usually subpages don't have the main Hero. 
-            Let's keep Hero only for Home for a cleaner subpage look, OR 
-            pass props to hide it.
-            Actually, the request implies buttons in Hero lead to subpages.
-            Let's show Hero ONLY on Home page for better UX.
-        */}
         {currentPage === 'home' && (
           <Hero 
             onNavigateRecruit={() => setCurrentPage('recruit')} 
