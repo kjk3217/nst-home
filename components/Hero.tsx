@@ -76,27 +76,29 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           </div>
         </MotionDiv>
 
-        {/* Right: Floating Badges / 3D Element (Hidden on Mobile as per request reference) */}
+        {/* Right: Floating Badges / 3D Element */}
         <MotionDiv 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          // [수정] items-start -> items-end로 변경하여 우측 정렬 (배경 인물 가림 방지)
-          // [유지] gap-4로 간격 축소 유지
-          className="hidden md:flex flex-col items-end gap-4"
+          // [수정] items-end(우측 정렬) 유지, gap-6 (원래 간격으로 복원)
+          className="hidden md:flex flex-col items-end gap-6"
         >
           {/* Award Badge */}
           <MotionDiv 
             whileHover={{ scale: 1.05 }}
-            // [유지] p-4, max-w-[280px] 컴팩트 사이즈 유지
-            className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-4 rounded-r-lg w-full max-w-[280px]"
+            // [수정] p-6, max-w-sm (원래 크기로 복원)
+            className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-6 rounded-r-lg w-full max-w-sm"
           >
-            {/* [유지] 내부 요소 간격 및 아이콘/텍스트 크기 축소 상태 유지 */}
-            <div className="flex items-center gap-3 text-white">
-              <Award className="text-yellow-400 w-8 h-8" />
+            {/* [수정] gap-4 (원래 간격으로 복원) */}
+            <div className="flex items-center gap-4 text-white">
+              {/* [수정] w-10 h-10 (원래 아이콘 크기로 복원) */}
+              <Award className="text-yellow-400 w-10 h-10" />
               <div>
-                <h3 className="font-bold text-base">2025 Winner</h3>
-                <p className="text-xs text-gray-300">대한민국 환경 대상 수상</p>
+                {/* [수정] text-lg (원래 폰트 크기로 복원) */}
+                <h3 className="font-bold text-lg">2025 Winner</h3>
+                {/* [수정] text-sm (원래 폰트 크기로 복원) */}
+                <p className="text-sm text-gray-300">대한민국 환경 대상 수상</p>
               </div>
             </div>
           </MotionDiv>
@@ -104,13 +106,13 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           {/* Construction Badge */}
           <MotionDiv 
             whileHover={{ scale: 1.05 }}
-            className="bg-white/10 backdrop-blur-md border-l-4 border-nst-teal p-4 rounded-r-lg w-full max-w-[280px]"
+            className="bg-white/10 backdrop-blur-md border-l-4 border-nst-teal p-6 rounded-r-lg w-full max-w-sm"
           >
-            <div className="flex items-center gap-3 text-white">
-              <Home className="text-nst-teal w-8 h-8" />
+            <div className="flex items-center gap-4 text-white">
+              <Home className="text-nst-teal w-10 h-10" />
               <div>
-                <h3 className="font-bold text-base">1,018+</h3>
-                <p className="text-xs text-gray-300">대형건설사 시공 검증</p>
+                <h3 className="font-bold text-lg">1,018+</h3>
+                <p className="text-sm text-gray-300">대형건설사 시공 검증</p>
               </div>
             </div>
           </MotionDiv>
@@ -118,13 +120,13 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
            {/* Verification Badge */}
            <MotionDiv 
             whileHover={{ scale: 1.05 }}
-            className="bg-white/10 backdrop-blur-md border-l-4 border-green-500 p-4 rounded-r-lg w-full max-w-[280px]"
+            className="bg-white/10 backdrop-blur-md border-l-4 border-green-500 p-6 rounded-r-lg w-full max-w-sm"
           >
-            <div className="flex items-center gap-3 text-white">
-              <CheckCircle className="text-green-500 w-8 h-8" />
+            <div className="flex items-center gap-4 text-white">
+              <CheckCircle className="text-green-500 w-10 h-10" />
               <div>
-                <h3 className="font-bold text-base">친환경</h3>
-                <p className="text-xs text-gray-300">환경부 교차 검증 완료</p>
+                <h3 className="font-bold text-lg">친환경</h3>
+                <p className="text-sm text-gray-300">환경부 교차 검증 완료</p>
               </div>
             </div>
           </MotionDiv>
