@@ -1,7 +1,3 @@
-{
-type: uploaded file
-fileName: kjk3217/nst-home/nst-home-e5ce3404496c9d567ed05467249202fc7c99f87e/constants.ts
-fullContent:
 import { AlertTriangle, ShieldCheck, Zap, Phone, Search, SprayCan, Sparkles, Layers, Building2, CheckCircle2 } from 'lucide-react';
 import { NavItem, StatItem, StepItem, PortfolioItem, FeatureItem, ProcessStep, FaqItem, HistoryItem, ReasonItem, BranchRegion } from './types';
 
