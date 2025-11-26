@@ -18,7 +18,6 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${ASSETS.heroBg})` }}
       >
-        {/* 모바일 가독성을 위해 오버레이 진하기 조정 (from-black/30 -> from-black/50) */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/70 md:bg-gradient-to-r md:from-nst-dark/90 md:via-nst-dark/60 md:to-transparent" />
       </div>
 
@@ -42,7 +41,6 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           </div>
 
           {/* Main Headline */}
-          {/* 모바일 폰트 사이즈 대폭 확대 (text-5xl), 행간 조절 (leading-tight) */}
           <h1 className="text-5xl md:text-6xl font-bold leading-[1.1] mb-6 md:mb-6 tracking-tight">
             대형 건설사가<br />
             검증하고<br />
@@ -50,7 +48,6 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           </h1>
           
           {/* Sub Headline with Colors */}
-          {/* 레퍼런스 이미지와 같이 줄바꿈 및 색상 강조 적용 */}
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 leading-snug">
             <span className="text-[#4ade80]">20년 노하우</span>의<br />
             친환경 <span className="text-amber-400 border-b-2 border-amber-400/50 pb-1">NST 공법</span>
@@ -62,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
             NST공법이 고객님의 건강하고 쾌적한 주거<br className="md:hidden" /> 환경을 설계합니다.
           </p>
 
-          {/* Buttons Area - Mobile: Stacked & Full Width */}
+          {/* Buttons Area */}
           <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full md:w-auto mt-4 md:mt-0">
             <button 
               onClick={onNavigateRecruit}
@@ -79,18 +76,14 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           </div>
         </MotionDiv>
 
-        {/* Right: Floating Badges / 3D Element (Desktop Only) */}
+        {/* Right: Floating Badges (Desktop Only) */}
         <MotionDiv 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="hidden md:flex flex-col items-end gap-6"
         >
-          {/* Award Badge */}
-          <MotionDiv 
-            whileHover={{ scale: 1.05 }}
-            className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-6 rounded-r-lg w-full max-w-sm"
-          >
+          <MotionDiv whileHover={{ scale: 1.05 }} className="bg-white/10 backdrop-blur-md border-l-4 border-yellow-500 p-6 rounded-r-lg w-full max-w-sm">
             <div className="flex items-center gap-4 text-white">
               <Award className="text-yellow-400 w-10 h-10" />
               <div>
@@ -100,11 +93,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
             </div>
           </MotionDiv>
 
-          {/* Construction Badge */}
-          <MotionDiv 
-            whileHover={{ scale: 1.05 }}
-            className="bg-white/10 backdrop-blur-md border-l-4 border-nst-teal p-6 rounded-r-lg w-full max-w-sm"
-          >
+          <MotionDiv whileHover={{ scale: 1.05 }} className="bg-white/10 backdrop-blur-md border-l-4 border-nst-teal p-6 rounded-r-lg w-full max-w-sm">
             <div className="flex items-center gap-4 text-white">
               <Home className="text-nst-teal w-10 h-10" />
               <div>
@@ -114,11 +103,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
             </div>
           </MotionDiv>
 
-           {/* Verification Badge */}
-           <MotionDiv 
-            whileHover={{ scale: 1.05 }}
-            className="bg-white/10 backdrop-blur-md border-l-4 border-green-500 p-6 rounded-r-lg w-full max-w-sm"
-          >
+           <MotionDiv whileHover={{ scale: 1.05 }} className="bg-white/10 backdrop-blur-md border-l-4 border-green-500 p-6 rounded-r-lg w-full max-w-sm">
             <div className="flex items-center gap-4 text-white">
               <CheckCircle className="text-green-500 w-10 h-10" />
               <div>
@@ -130,10 +115,12 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
         </MotionDiv>
       </div>
 
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/80 animate-bounce">
-        <span className="text-[10px] md:text-xs tracking-widest mb-2 font-light">SCROLL DOWN</span>
-        <ArrowDown size={20} />
+      {/* Scroll Indicator - [수정됨] 위치 잡는 div와 애니메이션 div 분리 */}
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2">
+        <div className="flex flex-col items-center text-white/80 animate-bounce">
+          <span className="text-[10px] md:text-xs tracking-widest mb-2 font-light">SCROLL DOWN</span>
+          <ArrowDown size={20} />
+        </div>
       </div>
     </section>
   );
