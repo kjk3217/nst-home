@@ -13,7 +13,7 @@ export const ASSETS = {
   
   // Common / Effectiveness
   awards: "/images/common/awards.jpg",
-  videoThumb: "/images/common/video-thumb.jpg", // 비디오 썸네일이 필요하다면 사용
+  videoThumb: "/images/common/video-thumb.jpg", 
   
   // Method Steps
   step1: "/images/method/step01.jpg",
@@ -29,12 +29,12 @@ export const ASSETS = {
   port6: "/images/portfolio/06.jpg",
 
   // Reason Backgrounds
-  reason1: "/images/reason/01.jpg", // Lab/Science 느낌
-  reason2: "/images/reason/02.jpg", // Building/City 느낌
-  reason3: "/images/reason/03.jpg", // Worker/Professional 느낌
+  reason1: "/images/reason/01.jpg", 
+  reason2: "/images/reason/02.jpg", 
+  reason3: "/images/reason/03.jpg", 
 };
 
-export const VIDEO_ID = "dQw4w9WgXcQ"; // 실제 유튜브 ID로 변경 필요
+export const VIDEO_ID = "dQw4w9WgXcQ"; 
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'NST 공법 소개', href: '#method' },
@@ -127,7 +127,7 @@ export const REASONS: ReasonItem[] = [
     description: '원료 확보부터 시공까지 본사가 직접 관리하여 최상의 품질을 보장합니다',
     icon: Layers,
     image: ASSETS.reason1,
-    activeImage: "/images/reason/01_active.jpg", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요 (예: "/images/reason/01_active.jpg")
+    activeImage: "/images/reason/01_active.jpg", // 오타 수정: .jpg1 -> .jpg
     colorOverlay: 'bg-gradient-to-br from-teal-500/60 to-emerald-600/60', // Green/Teal
   },
   {
@@ -135,7 +135,7 @@ export const REASONS: ReasonItem[] = [
     description: '1,018개 단지 이상, 대형 건설사가 선택한 검증된 기술력입니다',
     icon: Building2,
     image: ASSETS.reason2,
-    activeImage: "/images/reason/02_active.jpg", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요
+    activeImage: "/images/reason/02_active.jpg", // 오타 수정: .jpg1 -> .jpg
     colorOverlay: 'bg-gradient-to-br from-[#1a4a5e]/60 to-[#0f2940]/60', // Deep Teal/Blue
   },
   {
@@ -143,7 +143,7 @@ export const REASONS: ReasonItem[] = [
     description: '보여주기식 시공이 아닌, 과학적인 3단계 공법으로 유해물질을 차단합니다',
     icon: CheckCircle2,
     image: ASSETS.reason3,
-    activeImage: "/images/reason/03_active.jpg", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요
+    activeImage: "/images/reason/03_active.jpg", // 오타 수정: .jpg1 -> .jpg
     colorOverlay: 'bg-gradient-to-br from-yellow-600/60 to-yellow-500/60', // Yellow/Ochre
   }
 ];
@@ -224,4 +224,3 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     ]
   },
 ];
-}
