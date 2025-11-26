@@ -43,7 +43,7 @@ const ProblemSection: React.FC = () => {
                     <img 
                       src="/images/problem/visual.png" 
                       alt="새집증후군 문제 인식" 
-                      className="w-96 h-auto object-contain drop-shadow-2xl relative z-10"
+                      className="w-[30rem] h-auto object-contain drop-shadow-2xl relative z-10"
                     />
                  </div>
               </div>
