@@ -56,7 +56,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           {/* Description */}
           <p className="text-gray-200 text-base md:text-xl max-w-lg mb-10 md:mb-10 leading-relaxed font-light opacity-90">
             새집증후군 개선의 원조 기술이자 표준 기술.<br />
-            NST공법이 고객님의 건강하고 쾌적한 주거<br className="md:hidden" /> 환경을 설계합니다.
+            NST가 고객님의 건강하고 쾌적한 주거<br className="md:hidden" /> 환경을 설계합니다.
           </p>
 
           {/* Buttons Area */}
