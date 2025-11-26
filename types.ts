@@ -1,7 +1,3 @@
-{
-type: uploaded file
-fileName: kjk3217/nst-home/nst-home-e5ce3404496c9d567ed05467249202fc7c99f87e/types.ts
-fullContent:
 import React from 'react';
 
 export interface NavItem {
