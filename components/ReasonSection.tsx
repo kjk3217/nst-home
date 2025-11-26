@@ -37,7 +37,7 @@ const ReasonSection: React.FC = () => {
             차별화된 기술력과 안전성으로 압도적인 실내공기질 개선 효과를 약속합니다.
             <br className="md:hidden" />
             <span className="text-sm text-nst-teal mt-2 inline-block font-medium">
-              * 카드를 클릭하면 상세 이미지를 확인할 수 있습니다.
+              * 카드 클릭
             </span>
           </MotionP>
         </div>
