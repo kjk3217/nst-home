@@ -1,3 +1,7 @@
+{
+type: uploaded file
+fileName: kjk3217/nst-home/nst-home-e5ce3404496c9d567ed05467249202fc7c99f87e/constants.ts
+fullContent:
 import { AlertTriangle, ShieldCheck, Zap, Phone, Search, SprayCan, Sparkles, Layers, Building2, CheckCircle2 } from 'lucide-react';
 import { NavItem, StatItem, StepItem, PortfolioItem, FeatureItem, ProcessStep, FaqItem, HistoryItem, ReasonItem, BranchRegion } from './types';
 
@@ -127,6 +131,7 @@ export const REASONS: ReasonItem[] = [
     description: '원료 확보부터 시공까지 본사가 직접 관리하여 최상의 품질을 보장합니다',
     icon: Layers,
     image: ASSETS.reason1,
+    activeImage: "/images/reason/01_active.jpg1", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요 (예: "/images/reason/01_active.jpg")
     colorOverlay: 'bg-gradient-to-br from-teal-500/60 to-emerald-600/60', // Green/Teal
   },
   {
@@ -134,6 +139,7 @@ export const REASONS: ReasonItem[] = [
     description: '1,018개 단지 이상, 대형 건설사가 선택한 검증된 기술력입니다',
     icon: Building2,
     image: ASSETS.reason2,
+    activeImage: "/images/reason/02_active.jpg1", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요
     colorOverlay: 'bg-gradient-to-br from-[#1a4a5e]/60 to-[#0f2940]/60', // Deep Teal/Blue
   },
   {
@@ -141,6 +147,7 @@ export const REASONS: ReasonItem[] = [
     description: '보여주기식 시공이 아닌, 과학적인 3단계 공법으로 유해물질을 차단합니다',
     icon: CheckCircle2,
     image: ASSETS.reason3,
+    activeImage: "/images/reason/03_active.jpg1", // [수정 필요] 여기에 교체할 이미지 경로를 넣으세요
     colorOverlay: 'bg-gradient-to-br from-yellow-600/60 to-yellow-500/60', // Yellow/Ochre
   }
 ];
@@ -221,3 +228,4 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     ]
   },
 ];
+}
