@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { PROBLEMS } from '../constants';
-import { Search } from 'lucide-react';
+// Search 아이콘 import 제거
 
 const MotionDiv = motion.div as any;
 
@@ -30,11 +30,21 @@ const ProblemSection: React.FC = () => {
               
               {/* Abstract decorative graphic */}
               <div className="relative mt-12 h-64 w-full">
+                 {/* 배경 Blob 효과는 유지하여 은은한 분위기 연출 */}
                  <div className="absolute top-10 left-10 w-40 h-40 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
                  <div className="absolute top-10 right-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
                  <div className="absolute -bottom-8 left-20 w-40 h-40 bg-teal-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
-                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded-full shadow-xl">
-                    <Search className="text-nst-teal w-12 h-12" />
+                 
+                 {/* 돋보기 아이콘 삭제 및 이미지로 대체 */}
+                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                    {/* [CHECK] 준비된 이미지 경로로 src를 수정해주세요.
+                       예: src="/images/problem_visual.png" 또는 constants의 ASSETS.mascot 등
+                    */}
+                    <img 
+                      src="/images/problem_visual.png" 
+                      alt="새집증후군 문제 인식" 
+                      className="w-64 h-auto object-contain drop-shadow-2xl relative z-10"
+                    />
                  </div>
               </div>
             </MotionDiv>
