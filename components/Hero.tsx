@@ -41,7 +41,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           </div>
 
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl font-bold leading-[1.3] mb-6 md:mb-6 tracking-tight">
+          <h1 className="text-5xl md:text-6xl font-bold leading-[1.5] mb-6 md:mb-6 tracking-tight">
             대형 건설사가<br />
             검증하고<br />
             선택한, NST
