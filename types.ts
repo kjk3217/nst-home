@@ -1,3 +1,7 @@
+{
+type: uploaded file
+fileName: kjk3217/nst-home/nst-home-e5ce3404496c9d567ed05467249202fc7c99f87e/types.ts
+fullContent:
 import React from 'react';
 
 export interface NavItem {
@@ -55,6 +59,7 @@ export interface ReasonItem {
   description: string;
   icon: React.ElementType;
   image: string;
+  activeImage?: string; // [수정] 클릭 시 보여줄 이미지 (선택적 속성)
   colorOverlay: string; // Tailwind gradient classes
 }
 
@@ -68,4 +73,5 @@ export interface BranchRegion {
   count: number;
   items: BranchItem[];
   colorTheme: string; // Tailwind class for header bg
+}
 }
