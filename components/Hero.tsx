@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ASSETS } from '../constants';
 import { ArrowDown, Award, Home, CheckCircle } from 'lucide-react';
@@ -12,63 +12,71 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) => {
   return (
-    <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-[100dvh] min-h-screen flex flex-col justify-center overflow-hidden">
       {/* Background Image with Overlay */}
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${ASSETS.heroBg})` }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-nst-dark/90 via-nst-dark/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/60 md:bg-gradient-to-r md:from-nst-dark/90 md:via-nst-dark/60 md:to-transparent" />
       </div>
 
-      <div className="container mx-auto px-4 md:px-6 z-10 grid md:grid-cols-2 gap-12 items-center pt-20">
+      <div className="container mx-auto px-6 md:px-6 z-10 grid md:grid-cols-2 gap-12 items-center h-full pt-20 pb-10">
         
         {/* Left: Text Content */}
         <MotionDiv 
-          initial={{ opacity: 0, x: -50 }}
+          initial={{ opacity: 0, x: -30 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-white space-y-6"
+          className="text-white flex flex-col justify-center h-full md:block"
         >
-          <div className="flex items-center gap-2">
-            <span className="bg-yellow-500 text-nst-dark font-bold px-3 py-1 rounded-full text-sm">SINCE 2009</span>
-            <span className="text-nst-teal font-medium tracking-wide">새집증후군 개선 토탈 솔루션</span>
+          {/* Badge & Sublabel */}
+          <div className="flex items-center gap-3 mb-6 md:mb-6">
+            <span className="bg-amber-500 text-white font-bold px-4 py-1.5 rounded-full text-xs md:text-sm shadow-md">
+              SINCE 2009
+            </span>
+            <span className="text-nst-teal md:text-nst-teal text-white/90 font-medium tracking-wide text-xs md:text-sm">
+              새집증후군 개선 토탈 솔루션
+            </span>
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            대형 건설사가 검증하고<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-nst-teal to-green-400">
-              선택한, NST
-            </span>
+          {/* Main Headline */}
+          <h1 className="text-[2.5rem] md:text-6xl font-bold leading-[1.2] mb-4 md:mb-6">
+            대형 건설사가<br />
+            검증하고<br />
+            선택한, NST
           </h1>
           
-          <h2 className="text-2xl md:text-4xl font-bold text-gray-200">
-            <span className="text-nst-teal">20년 노하우</span>의 친환경<br />
-            NST 공법
+          {/* Sub Headline with Colors */}
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 md:mb-8 leading-tight">
+            <span className="text-[#4ade80]">20년 노하우</span>의<br className="md:hidden" />
+            친환경 <span className="text-amber-400">NST 공법</span>
           </h2>
 
-          <p className="text-gray-300 text-lg md:text-xl max-w-lg">
+          {/* Description */}
+          <p className="text-gray-200 text-base md:text-xl max-w-lg mb-auto md:mb-10 leading-relaxed font-light">
             새집증후군 개선의 원조 기술이자 표준 기술.<br />
-            NST 공법이 고객님의 건강하고 쾌적한 주거 환경을 설계합니다.
+            NST공법이 고객님의 건강하고 쾌적한 주거<br className="md:hidden" /> 환경을 설계합니다.
           </p>
 
-          <div className="flex flex-wrap gap-4 pt-4">
+          {/* Buttons Area - Mobile: Stacked Bottom, Desktop: Row */}
+          <div className="flex flex-col md:flex-row gap-3 md:gap-4 w-full md:w-auto mt-8 md:mt-0">
             <button 
               onClick={onNavigateRecruit}
-              className="bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded shadow-lg transition-transform transform hover:scale-105"
+              className="w-full md:w-auto bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-transform transform hover:scale-105 text-center"
             >
               신규 사업자 모집
             </button>
             <button 
               onClick={onNavigateBranches}
-              className="border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded shadow-lg transition-colors"
+              className="w-full md:w-auto border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded md:rounded shadow-lg transition-colors text-center"
             >
               전국 시공 지사 안내
             </button>
           </div>
         </MotionDiv>
 
-        {/* Right: Floating Badges / 3D Element Placeholder */}
+        {/* Right: Floating Badges / 3D Element (Hidden on Mobile as per request reference) */}
         <MotionDiv 
           initial={{ opacity: 0, x: 50 }}
           animate={{ opacity: 1, x: 0 }}
@@ -116,23 +124,12 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
               </div>
             </div>
           </MotionDiv>
-          
-          {/* Mascot Placeholder */}
-          <MotionDiv
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="relative mt-8"
-          >
-             {/* Replace with transparent PNG mascot */}
-             <div className="w-48 h-48 bg-contain bg-center bg-no-repeat" style={{ backgroundImage: `url(${ASSETS.mascot})`, borderRadius: '50%' }}></div>
-          </MotionDiv>
-
         </MotionDiv>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white animate-bounce">
-        <span className="text-xs tracking-widest mb-2">SCROLL DOWN</span>
+      <div className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-white/80 animate-bounce">
+        <span className="text-[10px] md:text-xs tracking-widest mb-2 font-light">SCROLL DOWN</span>
         <ArrowDown size={20} />
       </div>
     </section>
