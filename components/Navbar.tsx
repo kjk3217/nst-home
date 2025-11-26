@@ -44,7 +44,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigateHome }) => {
         isScrolled || isMobileMenuOpen ? 'bg-nst-dark/95 backdrop-blur-md shadow-lg py-4' : 'bg-transparent py-6'
       }`}
     >
-      <div className="container mx-auto px-6 md:px-6 flex justify-between items-center text-white">
+      <div className="container mx-auto px-8 md:px-6 flex justify-between items-center text-white">
         <div className="flex items-center gap-2 cursor-pointer" onClick={handleLogoClick}>
           {/* Logo Placeholder */}
           <div className="w-10 h-10 bg-gradient-to-br from-nst-teal to-green-400 rounded-lg flex items-center justify-center font-bold text-xl">
