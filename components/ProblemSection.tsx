@@ -41,7 +41,7 @@ const ProblemSection: React.FC = () => {
                        예: src="/images/problem_visual.png" 또는 constants의 ASSETS.mascot 등
                     */}
                     <img 
-                      src="/images/problem_visual.png" 
+                      src="/images/problem/visual.png" 
                       alt="새집증후군 문제 인식" 
                       className="w-64 h-auto object-contain drop-shadow-2xl relative z-10"
                     />
