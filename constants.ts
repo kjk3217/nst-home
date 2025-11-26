@@ -127,21 +127,21 @@ export const REASONS: ReasonItem[] = [
     description: '원료 확보부터 시공까지 본사가 직접 관리하여 최상의 품질을 보장합니다',
     icon: Layers,
     image: ASSETS.reason1,
-    colorOverlay: 'bg-gradient-to-br from-teal-500/90 to-emerald-600/90', // Green/Teal
+    colorOverlay: 'bg-gradient-to-br from-teal-500/60 to-emerald-600/60', // Green/Teal
   },
   {
     title: '압도적인 대형 건설사 시공 실적',
     description: '1,018개 단지 이상, 대형 건설사가 선택한 검증된 기술력입니다',
     icon: Building2,
     image: ASSETS.reason2,
-    colorOverlay: 'bg-gradient-to-br from-[#1a4a5e]/90 to-[#0f2940]/90', // Deep Teal/Blue
+    colorOverlay: 'bg-gradient-to-br from-[#1a4a5e]/60 to-[#0f2940]/60', // Deep Teal/Blue
   },
   {
     title: '20년 노하우의 현장 맞춤형 기술',
     description: '보여주기식 시공이 아닌, 과학적인 3단계 공법으로 유해물질을 차단합니다',
     icon: CheckCircle2,
     image: ASSETS.reason3,
-    colorOverlay: 'bg-gradient-to-br from-yellow-600/90 to-yellow-500/80', // Yellow/Ochre
+    colorOverlay: 'bg-gradient-to-br from-yellow-600/60 to-yellow-500/60', // Yellow/Ochre
   }
 ];
 
