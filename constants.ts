@@ -3,35 +3,38 @@ import { NavItem, StatItem, StepItem, PortfolioItem, FeatureItem, ProcessStep, F
 
 // =================================================================
 // ASSET MANAGEMENT
-// Replace these URLs with your local assets in the public folder
+// Images are now managed locally in the public/images directory
 // =================================================================
 
 export const ASSETS = {
-  heroBg: "https://images.unsplash.com/photo-1600607686527-6fb886090705?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80",
-  mascot: "https://picsum.photos/id/10/400/500", // Replace with the Blue Bird mascot
-  awards: "https://picsum.photos/id/106/800/600",
-  videoThumb: "https://picsum.photos/id/20/800/450",
+  // Hero Section
+  heroBg: "/images/hero/bg.jpg",
+  mascot: "/images/hero/mascot.png", 
+  
+  // Common / Effectiveness
+  awards: "/images/common/awards.jpg",
+  videoThumb: "/images/common/video-thumb.jpg", // 비디오 썸네일이 필요하다면 사용
   
   // Method Steps
-  step1: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=600&q=80",
-  step2: "https://images.unsplash.com/photo-1527011046414-4781f1f94f8c?auto=format&fit=crop&w=600&q=80",
-  step3: "https://images.unsplash.com/photo-1581092921461-eab62e97a783?auto=format&fit=crop&w=600&q=80",
+  step1: "/images/method/step01.jpg",
+  step2: "/images/method/step02.jpg",
+  step3: "/images/method/step03.jpg",
 
   // Portfolio
-  port1: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80",
-  port2: "https://images.unsplash.com/photo-1556912173-3db996349126?auto=format&fit=crop&w=600&q=80",
-  port3: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80",
-  port4: "https://images.unsplash.com/photo-1621905251918-48416bd8575a?auto=format&fit=crop&w=600&q=80",
-  port5: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80",
-  port6: "https://images.unsplash.com/photo-1595846519845-68e298c2edd8?auto=format&fit=crop&w=600&q=80",
+  port1: "/images/portfolio/01.jpg",
+  port2: "/images/portfolio/02.jpg",
+  port3: "/images/portfolio/03.jpg",
+  port4: "/images/portfolio/04.jpg",
+  port5: "/images/portfolio/05.jpg",
+  port6: "/images/portfolio/06.jpg",
 
   // Reason Backgrounds
-  reason1: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?auto=format&fit=crop&w=600&q=80", // Lab/Science
-  reason2: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=600&q=80", // Building
-  reason3: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80", // Worker
+  reason1: "/images/reason/01.jpg", // Lab/Science 느낌
+  reason2: "/images/reason/02.jpg", // Building/City 느낌
+  reason3: "/images/reason/03.jpg", // Worker/Professional 느낌
 };
 
-export const VIDEO_ID = "dQw4w9WgXcQ"; // Replace with your actual YouTube Video ID
+export const VIDEO_ID = "dQw4w9WgXcQ"; // 실제 유튜브 ID로 변경 필요
 
 export const NAV_ITEMS: NavItem[] = [
   { label: 'NST 공법 소개', href: '#method' },
