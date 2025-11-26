@@ -1,18 +1,15 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { REASONS } from '../constants';
-import { ChevronDown, RefreshCw } from 'lucide-react'; // [아이콘 추가] 상태 복귀를 나타내는 아이콘(선택사항)
+import { ChevronDown, RefreshCw } from 'lucide-react';
 
 const MotionH2 = motion.h2 as any;
 const MotionP = motion.p as any;
 const MotionDiv = motion.div as any;
 
 const ReasonSection: React.FC = () => {
-  // [수정 1] 활성화된(클릭된) 카드의 인덱스를 저장하는 State
-  // null이면 아무것도 클릭되지 않은 초기 상태
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
-  // [수정 2] 클릭 핸들러: 이미 활성화된 카드를 누르면 초기화(null), 아니면 해당 인덱스로 설정
   const handleCardClick = (index: number) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
@@ -47,7 +44,6 @@ const ReasonSection: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {REASONS.map((reason, index) => {
-            // [수정 3] 현재 카드가 활성화 상태인지 확인
             const isActive = activeIndex === index;
 
             return (
@@ -57,23 +53,21 @@ const ReasonSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                onClick={() => handleCardClick(index)} // 클릭 이벤트 연결
+                onClick={() => handleCardClick(index)}
                 className={`group relative h-[450px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer ${
                   isActive ? 'ring-4 ring-nst-teal ring-opacity-50' : ''
                 }`}
               >
                 {/* Background Image */}
-                {/* [수정 4] 활성화 시 activeImage가 있으면 그것을 보여주고, 없으면 원래 image 유지 */}
                 <div 
                   className="absolute inset-0 bg-cover bg-center transition-all duration-500"
                   style={{ 
                     backgroundImage: `url(${isActive && reason.activeImage ? reason.activeImage : reason.image})`,
-                    transform: isActive ? 'scale(1.05)' : 'scale(1)' // 클릭 시 살짝 확대 효과 유지
+                    transform: isActive ? 'scale(1.05)' : 'scale(1)'
                   }}
                 />
                 
                 {/* Color Overlay */}
-                {/* [수정 5] 활성화 되면 배경을 투명(bg-transparent/0)하게 변경 */}
                 <div 
                   className={`absolute inset-0 transition-all duration-500 ${
                     isActive ? 'bg-black/10' : reason.colorOverlay
@@ -94,7 +88,6 @@ const ReasonSection: React.FC = () => {
                   </div>
 
                   {/* Bottom Row: Text Content */}
-                  {/* [수정 6] 활성화 되어 배경이 투명해지면, 글자가 잘 안보일 수 있으므로 텍스트 그림자(drop-shadow) 추가 및 불투명도 조절 */}
                   <div className={`space-y-4 transition-opacity duration-300 ${isActive ? 'opacity-0 md:opacity-100 md:drop-shadow-lg' : 'opacity-100'}`}>
                     <h3 className="text-2xl font-bold leading-tight break-keep drop-shadow-md">
                       {reason.title}
@@ -104,9 +97,6 @@ const ReasonSection: React.FC = () => {
                       {reason.description}
                     </p>
                   </div>
-                  
-                  {/* 모바일 등에서 활성화 시 텍스트가 사라지게 하고 싶다면 위 opacity-0 등을 조정하세요. 
-                      현재는 텍스트 가독성을 위해 drop-shadow를 추가하여 유지했습니다. */}
 
                 </div>
               </MotionDiv>
@@ -120,4 +110,3 @@ const ReasonSection: React.FC = () => {
 };
 
 export default ReasonSection;
-}
