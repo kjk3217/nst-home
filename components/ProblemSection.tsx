@@ -29,7 +29,7 @@ const ProblemSection: React.FC = () => {
               </p>
               
               {/* Abstract decorative graphic */}
-              <div className="relative mt-12 h-96 w-full">
+              <div className="relative mt-12 h-64 w-full">
                  {/* 배경 Blob 효과는 유지하여 은은한 분위기 연출 */}
                  <div className="absolute top-10 left-10 w-40 h-40 bg-gray-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
                  <div className="absolute top-10 right-10 w-40 h-40 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
