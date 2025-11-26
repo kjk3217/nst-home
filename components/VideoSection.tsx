@@ -43,7 +43,7 @@ const VideoSection: React.FC = () => {
           <div className="relative pt-[56.25%] rounded-2xl overflow-hidden shadow-2xl bg-black">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+              src={`https://www.youtube.com/embed/81_tlLaCGB4`}
               title="NST Construction Process"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
