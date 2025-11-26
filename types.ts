@@ -57,3 +57,15 @@ export interface ReasonItem {
   image: string;
   colorOverlay: string; // Tailwind gradient classes
 }
+
+export interface BranchItem {
+  name: string;
+  location: string;
+}
+
+export interface BranchRegion {
+  region: string;
+  count: number;
+  items: BranchItem[];
+  colorTheme: string; // Tailwind class for header bg
+}

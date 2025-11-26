@@ -1,5 +1,5 @@
 import { AlertTriangle, ShieldCheck, Zap, Phone, Search, SprayCan, Sparkles, Layers, Building2, CheckCircle2 } from 'lucide-react';
-import { NavItem, StatItem, StepItem, PortfolioItem, FeatureItem, ProcessStep, FaqItem, HistoryItem, ReasonItem } from './types';
+import { NavItem, StatItem, StepItem, PortfolioItem, FeatureItem, ProcessStep, FaqItem, HistoryItem, ReasonItem, BranchRegion } from './types';
 
 // =================================================================
 // ASSET MANAGEMENT
@@ -140,4 +140,81 @@ export const REASONS: ReasonItem[] = [
     image: ASSETS.reason3,
     colorOverlay: 'bg-gradient-to-br from-yellow-600/90 to-yellow-500/80', // Yellow/Ochre
   }
+];
+
+export const BRANCH_REGIONS: BranchRegion[] = [
+  {
+    region: '서울',
+    count: 4,
+    colorTheme: 'bg-emerald-100 text-emerald-800 border-emerald-200',
+    items: [
+      { name: '네오하우스', location: '도봉구' },
+      { name: '이온크린', location: '용산구' },
+      { name: '이삭엔에스티', location: '송파구' },
+      { name: '파란공간', location: '강남구' },
+    ]
+  },
+  {
+    region: '인천',
+    count: 2,
+    colorTheme: 'bg-teal-100 text-teal-800 border-teal-200',
+    items: [
+      { name: 'PKCLASS', location: '서구' },
+      { name: '감성홈케어', location: '서구' },
+    ]
+  },
+  {
+    region: '충북/충남/세종/대전',
+    count: 5,
+    colorTheme: 'bg-green-100 text-green-800 border-green-200',
+    items: [
+      { name: '네오그린', location: '충북 청주시' },
+      { name: '슈퍼빗자루', location: '충북 청주시' },
+      { name: '에코그린', location: '세종시' },
+      { name: '청소PRO', location: '대전시' },
+      { name: '별별청소', location: '충남 서산시' },
+    ]
+  },
+  {
+    region: '전북/전남/광주',
+    count: 1,
+    colorTheme: 'bg-purple-100 text-purple-800 border-purple-200',
+    items: [
+      { name: '태양홈케어', location: '전북 군산시' },
+    ]
+  },
+  {
+    region: '경기',
+    count: 10,
+    colorTheme: 'bg-blue-100 text-blue-800 border-blue-200',
+    items: [
+      { name: 'NST힐링하우스', location: '남양주' },
+      { name: '스토리샵', location: '남양주' },
+      { name: '네오홈디자인', location: '남양주' },
+      { name: '온케어 홈케어', location: '의왕시' },
+      { name: 'THE CLASS', location: '시흥시' },
+      { name: '성실깔끄미', location: '김포시' },
+      { name: '숲속이야기(경기)', location: '파주시' },
+      { name: '청소남자', location: '파주시' },
+      { name: '아이앤아이', location: '오산시' },
+      { name: '(주)영우', location: '의정부시' },
+    ]
+  },
+  {
+    region: '경북/대구/울산',
+    count: 2,
+    colorTheme: 'bg-orange-100 text-orange-800 border-orange-200',
+    items: [
+      { name: '숲속이야기', location: '경북 구미' },
+      { name: '클린868', location: '대구 달서구' },
+    ]
+  },
+  {
+    region: '경남/부산',
+    count: 1,
+    colorTheme: 'bg-red-100 text-red-800 border-red-200',
+    items: [
+      { name: 'ERUDA', location: '부산 해운대' },
+    ]
+  },
 ];

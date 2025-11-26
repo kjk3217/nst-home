@@ -5,7 +5,12 @@ import { ArrowDown, Award, Home, CheckCircle } from 'lucide-react';
 
 const MotionDiv = motion.div as any;
 
-const Hero: React.FC = () => {
+interface HeroProps {
+  onNavigateRecruit: () => void;
+  onNavigateBranches: () => void;
+}
+
+const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) => {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -48,10 +53,16 @@ const Hero: React.FC = () => {
           </p>
 
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className="bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded shadow-lg transition-transform transform hover:scale-105">
+            <button 
+              onClick={onNavigateRecruit}
+              className="bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 px-8 rounded shadow-lg transition-transform transform hover:scale-105"
+            >
               신규 사업자 모집
             </button>
-            <button className="border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded shadow-lg transition-colors">
+            <button 
+              onClick={onNavigateBranches}
+              className="border border-white hover:bg-white/10 text-white font-bold py-4 px-8 rounded shadow-lg transition-colors"
+            >
               전국 시공 지사 안내
             </button>
           </div>

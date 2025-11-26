@@ -5,7 +5,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const MotionDiv = motion.div as any;
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+    onNavigateHome: () => void;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onNavigateHome }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -17,6 +21,23 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const handleLogoClick = () => {
+      onNavigateHome();
+      window.scrollTo(0, 0);
+  }
+
+  const handleNavClick = (href: string) => {
+      onNavigateHome();
+      // Small timeout to allow state change before scrolling to ID
+      setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) {
+              element.scrollIntoView({ behavior: 'smooth' });
+          }
+      }, 100);
+      setIsMobileMenuOpen(false);
+  }
+
   return (
     <nav
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -24,7 +45,7 @@ const Navbar: React.FC = () => {
       }`}
     >
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center text-white">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => window.scrollTo(0,0)}>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={handleLogoClick}>
           {/* Logo Placeholder */}
           <div className="w-10 h-10 bg-gradient-to-br from-nst-teal to-green-400 rounded-lg flex items-center justify-center font-bold text-xl">
             K
@@ -35,14 +56,14 @@ const Navbar: React.FC = () => {
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           {NAV_ITEMS.map((item) => (
-            <a
+            <button
               key={item.label}
-              href={item.href}
+              onClick={() => handleNavClick(item.href)}
               className="text-sm font-medium hover:text-nst-teal transition-colors relative group"
             >
               {item.label}
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-nst-teal transition-all group-hover:w-full" />
-            </a>
+            </button>
           ))}
         </div>
 
@@ -66,14 +87,13 @@ const Navbar: React.FC = () => {
           >
             <div className="flex flex-col items-center py-6 space-y-4">
               {NAV_ITEMS.map((item) => (
-                <a
+                <button
                   key={item.label}
-                  href={item.href}
+                  onClick={() => handleNavClick(item.href)}
                   className="text-lg font-medium text-white hover:text-nst-teal"
-                  onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
             </div>
           </MotionDiv>
