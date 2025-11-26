@@ -47,7 +47,7 @@ export const NAV_ITEMS: NavItem[] = [
 export const STATS: StatItem[] = [
   { value: '57,000+', label: '누적 시공량', subLabel: '대형 건설사 시공 완료' },
   { value: '30+', label: '지점', subLabel: 'NST 공법 전문 시공' },
-  { value: '20', label: '업력', subLabel: '축적된 현장 노하우' },
+  { value: '20', label: '업력', subLabel: '20년 축적된 현장 노하우' },
 ];
 
 export const PROBLEMS: FeatureItem[] = [
