@@ -3,10 +3,9 @@ import { motion } from 'framer-motion';
 import { 
   ArrowLeft, 
   Shield, 
-  Lock, 
-  Ban, 
   Layers, 
   Brush, 
+  Lock,
   TestTube2,
   CheckCircle2
 } from 'lucide-react';
@@ -26,7 +25,6 @@ const MethodStep2Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       
       {/* 1. Hero Section */}
       <section className="relative h-[50vh] min-h-[450px] flex items-center justify-center overflow-hidden">
-        {/* Background - 가구/목재의 따뜻함 + 기술적 차가움의 조화 */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason2})` }} 
@@ -72,7 +70,7 @@ const MethodStep2Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* Section 2-1: Mechanism (S200-1.jpg 시각화) */}
+            {/* [수정됨] Section 2-1: Mechanism Image */}
             <div className="mb-24">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
@@ -85,65 +83,17 @@ const MethodStep2Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Visual Diagram Area - 침투 및 봉쇄 과정을 그래픽으로 표현 */}
+                    {/* [이미지 교체 영역 1] S200 차폐 메커니즘 이미지 */}
                     <MotionDiv 
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-                        className="bg-gray-50 rounded-3xl p-8 relative overflow-hidden min-h-[400px] flex flex-col justify-center border border-gray-100"
+                        className="bg-gray-50 rounded-3xl overflow-hidden shadow-lg border border-gray-100"
                     >
-                        {/* Simulation Graphic */}
-                        <div className="relative w-full max-w-sm mx-auto aspect-square bg-white rounded-xl shadow-inner border-2 border-amber-200 overflow-hidden">
-                            {/* Wood Texture Background */}
-                            <div className="absolute inset-0 bg-[#e6cba5] opacity-50 pattern-dots"></div>
-                            
-                            {/* Pores (기공) */}
-                            <div className="absolute bottom-0 w-full h-1/2 flex justify-around items-end px-4">
-                                <div className="w-8 h-16 bg-[#c4a484] rounded-t-full border-x border-t border-[#a68b6c]"></div>
-                                <div className="w-10 h-20 bg-[#c4a484] rounded-t-full border-x border-t border-[#a68b6c]"></div>
-                                <div className="w-6 h-12 bg-[#c4a484] rounded-t-full border-x border-t border-[#a68b6c]"></div>
-                            </div>
-
-                            {/* Coating Layer Animation */}
-                            <motion.div 
-                                initial={{ height: 0 }}
-                                whileInView={{ height: '60%' }}
-                                transition={{ duration: 1.5, ease: "easeOut" }}
-                                className="absolute bottom-0 w-full bg-teal-500/80 backdrop-blur-sm border-t-4 border-teal-400 z-10 flex items-end justify-center pb-4"
-                            >
-                                <span className="text-white font-bold drop-shadow-md">NST-S200 Penetration</span>
-                            </motion.div>
-
-                            {/* Lock Icons Appearing */}
-                            <div className="absolute bottom-4 w-full flex justify-around z-20">
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 1.2, type: "spring" }}
-                                    className="bg-white p-1 rounded-full shadow-lg"
-                                >
-                                    <Lock size={16} className="text-teal-600" />
-                                </motion.div>
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 1.4, type: "spring" }}
-                                    className="bg-white p-1 rounded-full shadow-lg"
-                                >
-                                    <Lock size={16} className="text-teal-600" />
-                                </motion.div>
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 0 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    transition={{ delay: 1.6, type: "spring" }}
-                                    className="bg-white p-1 rounded-full shadow-lg"
-                                >
-                                    <Lock size={16} className="text-teal-600" />
-                                </motion.div>
-                            </div>
-                        </div>
-                        
-                        <div className="mt-6 text-center">
-                            <p className="text-sm font-bold text-gray-500 uppercase tracking-widest">Cross-section View</p>
-                        </div>
+                         {/* 여기에 준비하신 'S200 이미지 영역.png' 같은 파일을 넣으세요 */}
+                         <img 
+                            src="/images/methodstep/step02_mechanism.png" 
+                            alt="S200 차폐 메커니즘" 
+                            className="w-full h-auto object-cover"
+                        />
                     </MotionDiv>
 
                     {/* Steps Description */}
@@ -194,7 +144,7 @@ const MethodStep2Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
             </div>
 
-            {/* Section 2-2: Data Evidence (S200-2.jpg 기반 차트) */}
+            {/* [수정됨] Section 2-2: Data Evidence Image */}
             <div className="mb-24">
                 <div className="bg-nst-dark rounded-[2.5rem] p-8 md:p-16 text-white relative overflow-hidden">
                     {/* Background Pattern */}
@@ -229,81 +179,13 @@ const MethodStep2Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             </div>
                         </div>
 
-                        {/* Chart Area */}
-                        <div className="md:w-2/3 bg-white text-gray-800 rounded-3xl p-8 shadow-2xl">
-                            
-                            {/* Comparison 1: Toluene */}
-                            <div className="mb-8 pb-8 border-b border-gray-100">
-                                <div className="flex justify-between items-end mb-4">
-                                    <h3 className="text-xl font-bold flex items-center gap-2">
-                                        <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                                        톨루엔 (Toluene)
-                                    </h3>
-                                    <span className="text-red-500 font-black text-2xl">100% 제거</span>
-                                </div>
-                                
-                                <div className="relative h-12 bg-gray-100 rounded-full overflow-hidden flex">
-                                    {/* Uncoated */}
-                                    <div className="w-1/2 h-full relative border-r border-white">
-                                        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-xs font-bold z-10 text-gray-500">
-                                            미코팅 (0.001)
-                                        </div>
-                                        <div className="bg-red-200 w-full h-full"></div>
-                                    </div>
-                                    
-                                    {/* Coated */}
-                                    <div className="w-1/2 h-full relative">
-                                        <div className="absolute top-1/2 left-4 -translate-y-1/2 text-sm font-bold z-10 text-teal-700 flex items-center gap-1">
-                                            NST-S200 시공 <span className="bg-teal-600 text-white px-2 py-0.5 rounded text-xs ml-2">불검출</span>
-                                        </div>
-                                        <div className="bg-teal-100 w-full h-full opacity-50"></div> {/* Zero bar representation */}
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Comparison 2: Formaldehyde */}
-                            <div>
-                                <div className="flex justify-between items-end mb-4">
-                                    <h3 className="text-xl font-bold flex items-center gap-2">
-                                        <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-                                        포름알데히드 (HCHO)
-                                    </h3>
-                                    <span className="text-red-500 font-black text-2xl">94.8% 감소</span>
-                                </div>
-                                
-                                <div className="relative h-40 flex items-end gap-8 pl-4 border-l-2 border-gray-100">
-                                    {/* Bar 1 */}
-                                    <div className="w-1/2 h-full flex flex-col justify-end group">
-                                        <div className="text-center font-bold text-gray-500 mb-2">0.097</div>
-                                        <motion.div 
-                                            initial={{ height: 0 }}
-                                            whileInView={{ height: '100%' }}
-                                            className="w-full bg-red-400 rounded-t-xl relative"
-                                        >
-                                            <span className="absolute bottom-2 left-1/2 -translate-x-1/2 text-white text-sm font-bold">미코팅</span>
-                                        </motion.div>
-                                    </div>
-
-                                    {/* Bar 2 */}
-                                    <div className="w-1/2 h-full flex flex-col justify-end group">
-                                        <div className="text-center font-bold text-teal-600 mb-2">0.005</div>
-                                        <motion.div 
-                                            initial={{ height: 0 }}
-                                            whileInView={{ height: '5%' }} // 5% height relative to 100%
-                                            transition={{ delay: 0.3 }}
-                                            className="w-full bg-teal-500 rounded-t-xl relative"
-                                        >
-                                            <span className="absolute -top-8 left-1/2 -translate-x-1/2 text-teal-600 font-bold whitespace-nowrap">
-                                                ▼ 1/20 수준
-                                            </span>
-                                        </motion.div>
-                                        <div className="bg-teal-50 text-center py-2 text-sm font-bold text-teal-700 mt-1 rounded-b-xl">
-                                            NST-S200
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        {/* [이미지 교체 영역 2] S200 실험 차트 이미지 */}
+                        <div className="md:w-2/3 bg-white text-gray-800 rounded-3xl p-6 shadow-2xl overflow-hidden flex items-center justify-center">
+                             <img 
+                                src="/images/methodstep/step02_chart.png" 
+                                alt="S200 유해물질 차단 효과 차트" 
+                                className="w-full h-auto object-contain"
+                            />
                         </div>
                     </div>
                 </div>
