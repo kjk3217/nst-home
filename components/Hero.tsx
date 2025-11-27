@@ -53,8 +53,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
           {/* Sub Headline with Colors */}
           {/* [수정] 서브 헤드라인 여백 증가 및 강조 */}
           <h2 className="text-2xl md:text-4xl font-bold text-gray-100 mb-8 md:mb-10 leading-snug">
-            <span className="text-[#4ade80]">20년 노하우</span>의<br className="md:hidden" /> 
-             친환경 <span className="text-amber-400 border-b-4 border-amber-400/30 pb-1">NST 공법</span>
+            <span className="text-[#4ade80]">20년 노하우</span>의 <br className="md:hidden" /> 
+            친환경 <span className="text-amber-400 border-b-4 border-amber-400/30 pb-1">NST 공법</span>
           </h2>
 
           {/* Description */}
