@@ -62,6 +62,9 @@ export interface ReasonItem {
 export interface BranchItem {
   name: string;
   location: string;
+  representative?: string; // 대표자 추가
+  contact?: string;       // 연락처 추가
+  items?: string;         // 취급 품목 추가
 }
 
 export interface BranchRegion {
