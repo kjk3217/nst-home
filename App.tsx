@@ -15,38 +15,47 @@ import Footer from './components/Footer';
 import RecruitPage from './components/RecruitPage';
 import BranchesPage from './components/BranchesPage';
 
+// 서브 페이지 import
 import OneStopPage from './components/OneStopPage';
 import TrackRecordPage from './components/TrackRecordPage';
 import TechnologyPage from './components/TechnologyPage';
+
+// [추가] 공법 상세 페이지 import (파일 생성 완료 전제)
+import MethodStep1Page from './components/MethodStep1Page';
+import MethodStep2Page from './components/MethodStep2Page';
+import MethodStep3Page from './components/MethodStep3Page';
 
 import { PageType } from './types';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
-  // [추가] 돌아갈 섹션 위치를 저장할 state
   const [targetSection, setTargetSection] = useState<string | null>(null);
 
-  // [수정] 페이지 변경 및 타겟 섹션 이동 처리
   useEffect(() => {
     // 타겟 섹션이 있고, 현재 페이지가 home이면 해당 위치로 이동
     if (currentPage === 'home' && targetSection) {
       setTimeout(() => {
         const element = document.getElementById(targetSection);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth' }); // 부드럽게 스크롤
+          element.scrollIntoView({ behavior: 'smooth' });
         }
-        setTargetSection(null); // 이동 후 타겟 초기화
-      }, 100); // 렌더링 시간을 고려해 약간의 딜레이
+        setTargetSection(null);
+      }, 100);
     } else {
-      // 그 외의 경우(일반 페이지 이동)에는 맨 위로 이동
       window.scrollTo(0, 0);
     }
   }, [currentPage, targetSection]);
 
-  // [추가] 서브 페이지에서 '메인으로 돌아가기'를 눌렀을 때 호출할 함수
+  // Reason 섹션(메인 기술력 소개)으로 돌아가기
   const handleBackToReason = () => {
     setCurrentPage('home');
-    setTargetSection('reason'); // 'reason' 섹션(ReasonSection)으로 이동하도록 예약
+    setTargetSection('reason');
+  };
+
+  // [추가] Method 섹션(3단계 공법)으로 돌아가기
+  const handleBackToMethod = () => {
+    setCurrentPage('home');
+    setTargetSection('method');
   };
 
   const renderContent = () => {
@@ -56,23 +65,31 @@ const App: React.FC = () => {
       case 'branches':
         return <BranchesPage />;
       
-      // [수정] 서브 페이지들의 onBack에 handleBackToReason 함수 연결
+      // Reason 관련 서브 페이지
       case 'one-stop':
         return <OneStopPage onBack={handleBackToReason} />;
       case 'track-record':
         return <TrackRecordPage onBack={handleBackToReason} />;
       case 'technology':
         return <TechnologyPage onBack={handleBackToReason} />;
+
+      // [추가] Method 관련 서브 페이지
+      case 'method-step1':
+        return <MethodStep1Page onBack={handleBackToMethod} />;
+      case 'method-step2':
+        return <MethodStep2Page onBack={handleBackToMethod} />;
+      case 'method-step3':
+        return <MethodStep3Page onBack={handleBackToMethod} />;
         
       case 'home':
       default:
         return (
           <>
             <ProblemSection />
-            {/* ReasonSection에 네비게이션 함수 전달 */}
             <ReasonSection onNavigate={(page) => setCurrentPage(page)} />
             <StatsSection />
-            <MethodSection />
+            {/* [수정] MethodSection에 네비게이션 함수 전달 */}
+            <MethodSection onNavigate={(page) => setCurrentPage(page)} />
             <EffectivenessSection />
             <VideoSection />
             <PortfolioSection />
