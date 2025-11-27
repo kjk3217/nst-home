@@ -97,7 +97,7 @@ const BranchesPage: React.FC = () => {
       <AnimatePresence>
         {selectedBranch && (
           <>
-            {/* Backdrop */}
+            {/* Backdrop: z-50 */}
             <MotionDiv
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -106,8 +106,8 @@ const BranchesPage: React.FC = () => {
               className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
             />
             
-            {/* Modal Content */}
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+            {/* Modal Content Container: z-[60] (Backdrop보다 높게 설정) */}
+            <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 pointer-events-none">
               <MotionDiv
                 layoutId={`branch-${selectedBranch.name}`}
                 initial={{ opacity: 0, scale: 0.9, y: 20 }}
@@ -119,7 +119,8 @@ const BranchesPage: React.FC = () => {
                 <div className="bg-nst-dark p-6 text-white relative">
                   <button 
                     onClick={closeOverlay}
-                    className="absolute top-4 right-4 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors"
+                    className="absolute top-4 right-4 text-white/70 hover:text-white bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors z-50 cursor-pointer"
+                    aria-label="Close modal"
                   >
                     <X size={20} />
                   </button>
@@ -184,14 +185,7 @@ const BranchesPage: React.FC = () => {
                     </div>
                   </div>
 
-                  {/* Contact Button */}
-                  <a 
-                    href={`tel:${selectedBranch.contact?.split(',')[0].replace(/-/g, '')}`}
-                    className="flex items-center justify-center gap-2 w-full bg-nst-teal hover:bg-teal-600 text-white font-bold py-4 rounded-xl transition-all active:scale-95 shadow-lg shadow-teal-200"
-                  >
-                    <Phone size={20} />
-                    전화 상담 연결
-                  </a>
+                  {/* Contact Button Deleted */}
 
                 </div>
               </MotionDiv>
