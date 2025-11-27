@@ -8,9 +8,9 @@ export type PageType =
   | 'one-stop' 
   | 'track-record' 
   | 'technology'
-  | 'method-step1' // [추가]
-  | 'method-step2' // [추가]
-  | 'method-step3'; // [추가]
+  | 'method-step1'
+  | 'method-step2'
+  | 'method-step3';
 
 export interface NavItem {
   label: string;
