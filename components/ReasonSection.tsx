@@ -2,16 +2,26 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { REASONS } from '../constants';
 import { ChevronDown, RefreshCw } from 'lucide-react';
+import { PageType } from '../types'; // PageType import 확인
 
 const MotionH2 = motion.h2 as any;
 const MotionP = motion.p as any;
 const MotionDiv = motion.div as any;
 
-const ReasonSection: React.FC = () => {
+// [수정] onNavigate prop 추가
+interface ReasonSectionProps {
+  onNavigate: (page: PageType) => void;
+}
+
+const ReasonSection: React.FC<ReasonSectionProps> = ({ onNavigate }) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
+  // [수정] 카드 클릭 핸들러: 단순히 active 상태만 바꾸는 게 아니라 페이지 이동 처리
   const handleCardClick = (index: number) => {
-    setActiveIndex(activeIndex === index ? null : index);
+    // 0: 원스톱, 1: 실적, 2: 기술
+    if (index === 0) onNavigate('one-stop');
+    if (index === 1) onNavigate('track-record');
+    if (index === 2) onNavigate('technology');
   };
 
   return (
@@ -37,7 +47,7 @@ const ReasonSection: React.FC = () => {
             차별화된 기술력과 안전성으로 압도적인 실내공기질 개선 효과를 약속합니다.
             <br className="md:hidden" />
             <span className="text-sm text-nst-teal mt-2 inline-block font-medium">
-              * 카드 클릭
+              * 카드를 클릭하면 상세 페이지로 이동합니다.
             </span>
           </MotionP>
         </div>
@@ -54,48 +64,42 @@ const ReasonSection: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
                 onClick={() => handleCardClick(index)}
-                className={`group relative h-[450px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer ${
-                  isActive ? 'ring-4 ring-nst-teal ring-opacity-50' : ''
-                }`}
+                className={`group relative h-[450px] rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer hover:-translate-y-2`}
               >
-                {/* Background Image */}
+                {/* Background Image - 평소엔 기본, 호버시 active 이미지 살짝 보여주기 등 연출 가능하지만 여기선 기본 이미지만 사용하거나 activeImage 사용 */}
                 <div 
-                  className="absolute inset-0 bg-cover bg-center transition-all duration-500"
+                  className="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-110"
                   style={{ 
-                    backgroundImage: `url(${isActive && reason.activeImage ? reason.activeImage : reason.image})`,
-                    transform: isActive ? 'scale(1.05)' : 'scale(1)'
+                    // 카드가 '활성' 상태가 아니더라도 호버 시 active 이미지를 보여줄 수도 있음
+                    backgroundImage: `url(${reason.activeImage || reason.image})` 
                   }}
                 />
                 
                 {/* Color Overlay */}
-                <div 
-                  className={`absolute inset-0 transition-all duration-500 ${
-                    isActive ? 'bg-black/10' : reason.colorOverlay
-                  }`} 
-                />
+                <div className={`absolute inset-0 transition-all duration-500 opacity-60 group-hover:opacity-40 ${reason.colorOverlay}`} />
 
                 {/* Content Layout */}
                 <div className="absolute inset-0 p-8 flex flex-col justify-between text-white">
                   
-                  {/* Top Row: Icon and Chevron */}
+                  {/* Top Row */}
                   <div className="flex justify-between items-start">
-                    <div className={`backdrop-blur-md p-4 rounded-2xl transition-colors duration-300 ${isActive ? 'bg-nst-teal/90' : 'bg-white/20'}`}>
+                    <div className="backdrop-blur-md p-4 rounded-2xl bg-white/20 group-hover:bg-nst-teal/90 transition-colors duration-300">
                       <reason.icon className="w-8 h-8 text-white" />
-                    </div>
-                    <div className={`p-2 rounded-full transition-all duration-300 ${isActive ? 'bg-nst-teal text-white rotate-180' : 'bg-white/20 opacity-60 group-hover:opacity-100'}`}>
-                       {isActive ? <RefreshCw className="w-5 h-5" /> : <ChevronDown className="w-5 h-5 text-white" />}
                     </div>
                   </div>
 
-                  {/* Bottom Row: Text Content */}
-                  <div className={`space-y-4 transition-opacity duration-300 ${isActive ? 'opacity-0 md:opacity-100 md:drop-shadow-lg' : 'opacity-100'}`}>
+                  {/* Bottom Row */}
+                  <div className="space-y-4">
                     <h3 className="text-2xl font-bold leading-tight break-keep drop-shadow-md">
                       {reason.title}
                     </h3>
-                    <div className={`h-0.5 w-12 transition-colors ${isActive ? 'bg-nst-teal' : 'bg-white/50'}`} />
+                    <div className="h-0.5 w-12 bg-white/50 group-hover:bg-nst-teal transition-colors" />
                     <p className="text-white/90 leading-relaxed font-light break-keep text-sm md:text-base drop-shadow-md">
                       {reason.description}
                     </p>
+                    <div className="pt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center gap-2 font-bold text-sm">
+                        상세보기 <RefreshCw size={16} />
+                    </div>
                   </div>
 
                 </div>
