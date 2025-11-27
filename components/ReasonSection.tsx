@@ -25,7 +25,7 @@ const ReasonSection: React.FC<ReasonSectionProps> = ({ onNavigate }) => {
   };
 
   return (
-    <section className="py-24 bg-white">
+    <section id="reason" className="py-24 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         
         <div className="text-center mb-16">
