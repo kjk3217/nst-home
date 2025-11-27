@@ -9,7 +9,7 @@ import {
   Handshake, 
   Quote 
 } from 'lucide-react';
-import { ASSETS } from '../constants';
+import { ASSETS } from '../constants'; //
 
 const MotionDiv = motion.div as any;
 
@@ -28,7 +28,6 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     visible: { opacity: 1, y: 0 }
   };
 
-  // [수정] 다른 페이지와 동일한 애니메이션 효과 적용
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
@@ -37,8 +36,7 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
-      {/* 1. Hero Section [디자인 통일 수정] */}
-      {/* 높이를 60vh -> 55vh로 조정하고, min-h를 450px로 통일 */}
+      {/* 1. Hero Section [디자인 통일 완료] */}
       <section className="relative h-[55vh] min-h-[450px] flex items-center justify-center overflow-hidden">
         
         {/* Background Image */}
@@ -46,8 +44,7 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason2})` }} 
         >
-           {/* [수정] 배경 오버레이 변경: 기존의 'to-white' 그라데이션을 제거하고 
-               다른 페이지처럼 어두운 톤으로 통일하여 텍스트 가독성 확보 */}
+           {/* 배경 오버레이: TechnologyPage와 동일하게 어두운 톤 적용 */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80" />
         </div>
 
@@ -55,22 +52,21 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
              <MotionDiv
                 initial="hidden"
                 animate="visible"
-                variants={fadeInUp} // variants 통일
+                variants={fadeInUp}
                 transition={{ duration: 0.8 }}
             >
-                {/* [수정] 뱃지 스타일 통일: Glassmorphism 효과 적용 */}
+                {/* 뱃지 스타일: Glassmorphism (유리 효과) 적용 */}
                 <div className="inline-flex items-center gap-2 bg-white/10 border border-yellow-400/50 text-yellow-400 px-4 py-1.5 rounded-full font-bold text-sm mb-6 backdrop-blur-md">
                     <Trophy size={16} />
                     <span>NST SYSTEM 02</span>
                 </div>
 
-                {/* [수정] 타이틀 색상 변경: Slate-800 -> White (어두운 배경 위 흰 글씨) */}
+                {/* 텍스트 색상: 흰색으로 변경 */}
                 <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
                     대형 건설사가 선택한<br />
                     <span className="text-nst-teal">전세대 일괄 시공 기술</span>
                 </h1>
 
-                {/* [수정] 본문 텍스트 색상 변경: Slate-600 -> Gray-200/300 */}
                 <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
                     국내 주요 건설사들과의 긴밀한 협력을 통해<br className="hidden md:block"/>
                     수많은 대규모 프로젝트에서 <span className="text-white font-bold">업계 표준</span>을 만들어왔습니다.
@@ -112,8 +108,9 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-8"
                 >
-                    {/* Card 1 */}
-                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    {/* Card 1: 검증된 객관적 성능 (Blue Theme) */}
+                    {/* [수정] border-t-4 border-blue-500 추가 */}
+                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 border-t-4 border-t-blue-500 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
                             <FileCheck size={32} />
                         </div>
@@ -123,8 +120,9 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         </p>
                     </MotionDiv>
                     
-                    {/* Card 2 (Highlight) */}
-                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-nst-teal hover:-translate-y-2 transition-transform duration-300 relative">
+                    {/* Card 2: 압도적 신뢰와 전문성 (Teal Theme - Main) */}
+                    {/* 기존 border-t-4 border-nst-teal 유지 */}
+                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 border-t-4 border-t-nst-teal hover:-translate-y-2 transition-transform duration-300 relative">
                         <div className="absolute top-0 right-0 p-4 opacity-5">
                             <Quote size={60} />
                         </div>
@@ -137,8 +135,9 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         </p>
                     </MotionDiv>
 
-                    {/* Card 3 */}
-                    <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    {/* Card 3: 강력한 파트너십 (Orange Theme) */}
+                    {/* [수정] border-t-4 border-orange-500 추가 */}
+                    <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 border-t-4 border-t-orange-500 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
                             <Handshake size={32} />
                         </div>
@@ -152,7 +151,6 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             
              {/* Section 2-2: Project Reference Banner */}
              <div className="mb-24 bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
-                {/* Decorative background elements */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-nst-teal opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
                 
                 <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
@@ -185,12 +183,11 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     {/* Image Grid */}
                     <div className="md:w-1/2 grid grid-cols-2 gap-4">
                         <div className="bg-white/10 rounded-2xl h-48 md:h-64 overflow-hidden border border-white/10 relative group">
-                            {/* [IMAGE_CHECK] 현수막 이미지 (기존 경로 유지) */}
+                            {/* [수정] 현수막 이미지 경로 실제 파일로 연결 */}
                             <img src="/images/reason/track_banner_01.jpg" alt="Building Banner 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                             <div className="absolute bottom-4 left-4 font-bold text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">시공 현장 전경</div>
                         </div>
                         <div className="bg-white/10 rounded-2xl h-48 md:h-64 overflow-hidden border border-white/10 relative group mt-8">
-                             {/* [IMAGE_CHECK] 시공 장면 이미지 (기존 경로 유지) */}
                             <img src={ASSETS.step1} alt="Building Banner 2" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                             <div className="absolute bottom-4 left-4 font-bold text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">NST 시공 인증</div>
                         </div>
