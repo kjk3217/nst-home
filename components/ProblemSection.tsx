@@ -83,7 +83,7 @@ const ProblemSection: React.FC = () => {
                     <Skull size={24} />
                   </div>
                   <div>
-                    <h4 className="font-bold text-red-600 text-lg mb-1">침묵의 암살자, 폼알데하이드</h4>
+                    <h4 className="font-bold text-red-600 text-lg mb-1">침묵의 암살자,<br/>폼알데하이드</h4>
                     <p className="text-sm text-slate-600 leading-snug">
                       기준치의 최대 <span className="font-black text-slate-900 text-base">5배 이상</span> 초과 검출.<br/>
                       환기만으로는 절대 사라지지 않습니다.
