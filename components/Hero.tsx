@@ -35,7 +35,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
             <span className="bg-amber-500 text-white font-bold px-3 py-1 rounded-full text-[11px] md:text-sm shadow-md tracking-wide">
               SINCE 2009
             </span>
-            <span className="text-amber-400 md:text-nst-teal font-medium tracking-tight text-sm md:text-sm">
+            <span className="text-yellow-400 md:text-yellow-400 font-bold tracking-tight text-base md:text-lg">
               새집증후군 개선 토탈 솔루션
             </span>
           </div>
