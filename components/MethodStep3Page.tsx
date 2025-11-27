@@ -26,7 +26,6 @@ const MethodStep3Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
       
       {/* 1. Hero Section */}
       <section className="relative h-[50vh] min-h-[450px] flex items-center justify-center overflow-hidden">
-        {/* Background - 숲의 청량함과 마무리의 상쾌함 */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason3})` }} 
@@ -72,7 +71,7 @@ const MethodStep3Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* Section 2-1: Mechanism (키토산 고정화 기술 시각화) */}
+            {/* [수정됨] Section 2-1: Mechanism Image */}
             <div className="mb-24">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
@@ -85,51 +84,17 @@ const MethodStep3Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Visual Diagram Area */}
+                    {/* [이미지 교체 영역 1] 키토산 포획 원리 이미지 */}
                     <MotionDiv 
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-                        className="bg-green-50 rounded-3xl p-8 relative overflow-hidden min-h-[400px] flex flex-col justify-center border border-green-100"
+                        className="bg-green-50 rounded-3xl p-8 relative overflow-hidden flex flex-col justify-center border border-green-100"
                     >
-                        {/* Simulation Graphic: The Net Trap */}
-                        <div className="relative w-full max-w-sm mx-auto aspect-video bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden flex items-center justify-center">
-                            
-                            {/* Background Grid (The Net) */}
-                            <div className="absolute inset-0 z-0 opacity-20" 
-                                style={{ backgroundImage: 'radial-gradient(circle, #22c55e 1px, transparent 1px)', backgroundSize: '20px 20px' }}
-                            ></div>
-
-                            {/* Chitosan Net Structure Animation */}
-                            <motion.div 
-                                animate={{ scale: [1, 1.05, 1] }}
-                                transition={{ repeat: Infinity, duration: 4 }}
-                                className="relative z-10 w-48 h-48 border-4 border-green-400 rounded-full flex items-center justify-center opacity-80"
-                            >
-                                <div className="absolute inset-0 border-2 border-green-200 rounded-full animate-ping"></div>
-                                <span className="text-green-600 font-bold bg-white px-2 py-1 rounded shadow-sm z-20">키토산(Chitosan)</span>
-                                
-                                {/* Trapped Particles */}
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 2 }}
-                                    animate={{ opacity: 1, scale: 0.5, x: 0, y: 0 }}
-                                    transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-                                    className="absolute top-0 right-0 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-[8px] text-white font-bold"
-                                >
-                                    HCHO
-                                </motion.div>
-                                <motion.div 
-                                    initial={{ opacity: 0, scale: 2 }}
-                                    animate={{ opacity: 1, scale: 0.5, x: -20, y: 20 }}
-                                    transition={{ duration: 1.5, delay: 0.5, repeat: Infinity, repeatDelay: 1 }}
-                                    className="absolute bottom-0 left-0 w-8 h-8 bg-gray-600 rounded-full flex items-center justify-center text-[8px] text-white font-bold"
-                                >
-                                    HCHO
-                                </motion.div>
-                            </motion.div>
-                            
-                            <div className="absolute bottom-4 text-xs font-bold text-gray-400">
-                                [ 유해물질 포획 시뮬레이션 ]
-                            </div>
-                        </div>
+                         {/* 여기에 준비하신 'F100 이미지 영역.png' 같은 파일을 넣으세요 */}
+                         <img 
+                            src="/images/methodstep/step03_mechanism.png" 
+                            alt="F100 키토산 고정화 기술" 
+                            className="w-full h-auto object-contain rounded-xl shadow-md bg-white"
+                        />
                     </MotionDiv>
 
                     {/* Description */}
@@ -167,7 +132,7 @@ const MethodStep3Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
             </div>
 
-            {/* Section 2-2: Three Key Features (F100.jpg 하단 표 시각화) */}
+            {/* Section 2-2: Three Key Features */}
             <div className="mb-24">
                 <div className="grid md:grid-cols-3 gap-6">
                     {/* Card 1: Removal */}
