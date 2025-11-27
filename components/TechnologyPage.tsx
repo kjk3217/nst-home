@@ -156,7 +156,7 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         <div className="absolute -inset-4 bg-orange-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                              {/* [IMAGE_PLACEHOLDER] tech_step_01.jpg (S100 벽면 분사) */}
-                            <img src={ASSETS.step1} alt="S100 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                            <img src="/images/reason/tech-01.jpg" alt="S100 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-sm">
                                 <span className="font-black text-orange-500 text-xl">STEP 01</span>
                             </div>
@@ -195,7 +195,7 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                          <div className="absolute -inset-4 bg-teal-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                          <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                             {/* [IMAGE_PLACEHOLDER] tech_step_02.jpg (S200 가구 붓칠) - portfolio/03.jpg 사용 추천 */}
-                            <img src="/images/portfolio/03.jpg" alt="S200 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                            <img src="/images/reason/tech-02.jpg" alt="S200 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                             <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-sm">
                                 <span className="font-black text-nst-teal text-xl">STEP 02</span>
                             </div>
@@ -237,7 +237,7 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         <div className="absolute -inset-4 bg-green-100/50 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         <div className="relative rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white aspect-[4/3]">
                             {/* [IMAGE_PLACEHOLDER] tech_step_03.jpg (F100 서랍 내부 분사) */}
-                            <img src={ASSETS.step3} alt="F100 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                            <img src="/images/reason/tech-03.jpg" alt="F100 Application" className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
                              <div className="absolute top-6 left-6 bg-white/90 backdrop-blur px-4 py-2 rounded-xl shadow-sm">
                                 <span className="font-black text-green-600 text-xl">STEP 03</span>
                             </div>
