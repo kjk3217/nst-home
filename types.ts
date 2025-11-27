@@ -1,5 +1,8 @@
 import React from 'react';
 
+// [추가됨] 페이지 네비게이션을 위한 타입 정의
+export type PageType = 'home' | 'recruit' | 'branches' | 'one-stop' | 'track-record' | 'technology';
+
 export interface NavItem {
   label: string;
   href: string;
@@ -48,6 +51,7 @@ export interface HistoryItem {
   year: string;
   title: string;
   desc: string;
+  icon: React.ElementType;
 }
 
 export interface ReasonItem {
