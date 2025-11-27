@@ -58,9 +58,9 @@ const App: React.FC = () => {
             <MethodSection />
             <EffectivenessSection />
             <VideoSection />
+            <PortfolioSection />
             <ProcessSection />
             <AboutSection />
-            <PortfolioSection />
             <ContactSection />
           </>
         );
