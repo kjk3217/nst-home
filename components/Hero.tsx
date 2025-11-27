@@ -116,8 +116,8 @@ const Hero: React.FC<HeroProps> = ({ onNavigateRecruit, onNavigateBranches }) =>
                 <Home className="text-nst-teal w-8 h-8" />
               </div>
               <div>
-                <h3 className="font-bold text-xl mb-1">1,018+</h3>
-                <p className="text-sm text-gray-300 font-medium">대형건설사 시공 검증</p>
+                <h3 className="font-bold text-xl mb-1">업계 유일</h3>
+                <p className="text-sm text-gray-300 font-medium">건설사 전세대 일괄시공</p>
               </div>
             </div>
           </MotionDiv>
