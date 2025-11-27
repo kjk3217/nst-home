@@ -173,7 +173,7 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     <div className="md:w-1/2 grid grid-cols-2 gap-4">
                         {/* [IMAGE_PLACEHOLDER] 여기에 'track_banner_01.jpg' 등 현수막 사진이 들어가면 좋습니다. */}
                         <div className="bg-white/10 rounded-2xl h-48 md:h-64 overflow-hidden border border-white/10 relative group">
-                            <img src={ASSETS.reason2} alt="Building Banner 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
+                            <img src="/images/reason/track_banner_01.jpg" alt="Building Banner 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
                             <div className="absolute bottom-4 left-4 font-bold text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">시공 현장 전경</div>
                         </div>
                          {/* [IMAGE_PLACEHOLDER] */}
