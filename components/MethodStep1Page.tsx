@@ -3,12 +3,7 @@ import { motion } from 'framer-motion';
 import { 
   ArrowLeft, 
   Sun, 
-  Scissors, 
-  Magnet, 
-  Zap, 
   CheckCircle2, 
-  FlaskConical,
-  Timer
 } from 'lucide-react';
 import { ASSETS } from '../constants';
 
@@ -24,9 +19,8 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
-      {/* 1. Hero Section: S100 Identity */}
+      {/* 1. Hero Section */}
       <section className="relative h-[50vh] min-h-[450px] flex items-center justify-center overflow-hidden">
-        {/* Background - 전문적인 연구소 느낌 */}
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason1})` }} 
@@ -72,7 +66,7 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* Section 2-1: Mechanism (Image 1 기반 시각화) */}
+            {/* [수정됨] Section 2-1: Mechanism Image */}
             <div className="mb-24">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
@@ -85,58 +79,17 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-12 items-center">
-                    {/* Visual Diagram Area */}
+                    {/* [이미지 교체 영역 1] S100 메커니즘 이미지 */}
                     <MotionDiv 
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
-                        className="bg-blue-50 rounded-3xl p-8 relative overflow-hidden min-h-[400px] flex flex-col justify-center"
+                        className="rounded-3xl overflow-hidden shadow-lg border border-gray-100"
                     >
-                        {/* Concept Visual representing S100-1.jpg */}
-                        <div className="absolute top-4 right-4 bg-white/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold text-blue-600 border border-blue-100">
-                            Mechanism
-                        </div>
-
-                        {/* Animation Concept */}
-                        <div className="relative z-10 space-y-8">
-                            {/* Step 1: Adsorption */}
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-blue-100">
-                                <div className="bg-slate-100 p-3 rounded-full text-slate-600">
-                                    <Magnet size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-nst-dark">1단계: 강력한 흡착</h4>
-                                    <p className="text-sm text-gray-500">벽면 코팅층이 공기 중 유해물질(VOCs)을 자석처럼 끌어당김</p>
-                                </div>
-                            </div>
-                            
-                            {/* Arrow */}
-                            <div className="flex justify-center text-blue-300">
-                                <Zap size={24} className="animate-bounce" />
-                            </div>
-
-                            {/* Step 2: Decomposition */}
-                            <div className="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-blue-100">
-                                <div className="bg-amber-100 p-3 rounded-full text-amber-600">
-                                    <Scissors size={24} />
-                                </div>
-                                <div>
-                                    <h4 className="font-bold text-nst-dark">2단계: 분해 (가위 효과)</h4>
-                                    <p className="text-sm text-gray-500">활성산소와 수산화라디칼이 유해물질 구조를 절단하여 무해화</p>
-                                </div>
-                            </div>
-
-                            {/* Result */}
-                            <div className="flex justify-between text-center px-4 pt-4 border-t border-blue-200/50">
-                                <div>
-                                    <div className="text-xs text-gray-400 mb-1">유해물질</div>
-                                    <div className="font-bold text-red-500">HCHO</div>
-                                </div>
-                                <div className="text-gray-400">→</div>
-                                <div>
-                                    <div className="text-xs text-gray-400 mb-1">분해 후</div>
-                                    <div className="font-bold text-green-500">CO₂ + H₂O</div>
-                                </div>
-                            </div>
-                        </div>
+                        {/* 여기에 준비하신 'S100 이미지 영역.png' 같은 파일을 넣으세요 */}
+                        <img 
+                            src="/images/methodstep/step01_mechanism.png" 
+                            alt="S100 듀얼 액션 메커니즘" 
+                            className="w-full h-auto object-cover"
+                        />
                     </MotionDiv>
 
                     {/* Text Description */}
@@ -174,7 +127,7 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
             </div>
 
-            {/* Section 2-2: Data Evidence (Image 2 기반 차트) */}
+            {/* [수정됨] Section 2-2: Data Evidence Image */}
             <div className="mb-24 bg-gray-50 rounded-3xl p-8 md:p-12 border border-gray-100">
                  <div className="flex flex-col md:flex-row items-end gap-4 mb-10">
                     <div>
@@ -186,63 +139,14 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-12">
-                    {/* Chart Visualization */}
-                    <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                        <div className="flex items-end justify-around h-64 gap-4 pb-4 border-b border-gray-100">
-                            {/* Bar 1: 초기 */}
-                            <div className="w-1/4 flex flex-col items-center justify-end h-full group">
-                                <div className="text-lg font-bold text-red-500 mb-2">25</div>
-                                <div className="w-full bg-red-100 h-full rounded-t-lg relative overflow-hidden">
-                                     <motion.div 
-                                        initial={{ height: 0 }} 
-                                        whileInView={{ height: '100%' }} 
-                                        transition={{ duration: 1 }}
-                                        className="absolute bottom-0 w-full bg-red-500" 
-                                     />
-                                </div>
-                                <div className="text-sm font-bold text-gray-600 mt-3">초기 농도</div>
-                                <div className="text-xs text-gray-400">ppm</div>
-                            </div>
-
-                            {/* Bar 2: 흡착 */}
-                            <div className="w-1/4 flex flex-col items-center justify-end h-full group">
-                                <div className="text-lg font-bold text-green-600 mb-2">15</div>
-                                <div className="w-full bg-green-100 h-[60%] rounded-t-lg relative overflow-hidden">
-                                    <motion.div 
-                                        initial={{ height: 0 }} 
-                                        whileInView={{ height: '100%' }} 
-                                        transition={{ duration: 1, delay: 0.2 }}
-                                        className="absolute bottom-0 w-full bg-green-600" 
-                                    />
-                                </div>
-                                <div className="text-sm font-bold text-gray-600 mt-3">1단계: 흡착</div>
-                                <div className="text-xs text-green-600 font-medium">30분 후</div>
-                            </div>
-
-                             {/* Bar 3: 분해 */}
-                             <div className="w-1/4 flex flex-col items-center justify-end h-full group">
-                                <div className="text-lg font-bold text-blue-500 mb-2">10</div>
-                                <div className="w-full bg-blue-100 h-[40%] rounded-t-lg relative overflow-hidden">
-                                     <motion.div 
-                                        initial={{ height: 0 }} 
-                                        whileInView={{ height: '100%' }} 
-                                        transition={{ duration: 1, delay: 0.4 }}
-                                        className="absolute bottom-0 w-full bg-blue-500" 
-                                     />
-                                </div>
-                                <div className="text-sm font-bold text-gray-600 mt-3">2단계: 분해</div>
-                                <div className="text-xs text-blue-500 font-medium">1~2시간</div>
-                            </div>
-
-                             {/* Bar 4: 완료 */}
-                             <div className="w-1/4 flex flex-col items-center justify-end h-full group">
-                                <div className="text-lg font-bold text-nst-dark mb-2">0</div>
-                                <div className="w-full bg-gray-100 h-[2px] rounded-t-lg relative"></div>
-                                <div className="text-sm font-bold text-gray-600 mt-3">지속 반응</div>
-                                <div className="text-xs text-gray-500">95% 이상 저감</div>
-                            </div>
-                        </div>
+                <div className="grid md:grid-cols-2 gap-12 items-center">
+                    {/* [이미지 교체 영역 2] 가스백 테스트 그래프 이미지 */}
+                    <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-200 bg-white">
+                         <img 
+                            src="/images/methodstep/step01_chart.png" 
+                            alt="가스백 저감 성능 그래프" 
+                            className="w-full h-auto object-contain"
+                        />
                     </div>
 
                     {/* Interpretation */}
@@ -284,7 +188,7 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
             </div>
 
-            {/* Section 2-3: Visual Experiment (Image 3 기반 타임라인) */}
+            {/* [수정됨] Section 2-3: Visual Experiment Image */}
             <div className="mb-12">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
@@ -296,69 +200,19 @@ const MethodStep1Page: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
 
                 <div className="relative max-w-5xl mx-auto">
-                    {/* Connection Line */}
-                    <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-blue-500/20 via-blue-500/50 to-transparent -z-10 transform -translate-y-1/2"></div>
-                    
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        {/* Time 1 */}
-                        <MotionDiv 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center"
-                        >
-                            <div className="mb-4 bg-slate-800 text-white px-3 py-1 rounded-full text-sm font-bold">Start</div>
-                            <div className="w-40 h-40 rounded-full bg-blue-600 flex items-center justify-center mb-6 shadow-inner ring-4 ring-blue-100 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/20"></div>
-                                <span className="text-white font-bold text-xl relative z-10">진한 청색</span>
-                            </div>
-                            <h3 className="font-bold text-lg text-gray-800">실험 초기</h3>
-                            <p className="text-sm text-gray-500 mt-2 text-center">지표물질(MB 5ppm) 투입</p>
-                        </MotionDiv>
-
-                        {/* Time 2 */}
-                        <MotionDiv 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 }}
-                            className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center"
-                        >
-                             <div className="mb-4 bg-slate-800 text-white px-3 py-1 rounded-full text-sm font-bold flex gap-2">
-                                <Timer size={16} /> 3 Hours
-                             </div>
-                            <div className="w-40 h-40 rounded-full bg-blue-300 flex items-center justify-center mb-6 shadow-inner ring-4 ring-blue-100 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-gradient-to-br from-transparent to-black/10"></div>
-                                <span className="text-white font-bold text-xl relative z-10 drop-shadow-md">색상 옅어짐</span>
-                            </div>
-                            <h3 className="font-bold text-lg text-gray-800">반응 진행 중</h3>
-                            <p className="text-sm text-gray-500 mt-2 text-center">실내 LED 조명 하 반응</p>
-                        </MotionDiv>
-
-                         {/* Time 3 */}
-                         <MotionDiv 
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.4 }}
-                            className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 flex flex-col items-center relative overflow-hidden"
-                        >
-                             {/* Shine Effect */}
-                             <div className="absolute top-0 right-0 p-4">
-                                <FlaskConical className="text-green-500 animate-pulse" size={24} />
-                             </div>
-
-                             <div className="mb-4 bg-green-600 text-white px-3 py-1 rounded-full text-sm font-bold flex gap-2">
-                                <Timer size={16} /> 7 Hours
-                             </div>
-                            <div className="w-40 h-40 rounded-full bg-blue-50 flex items-center justify-center mb-6 shadow-inner ring-4 ring-green-100 border-2 border-green-500 relative overflow-hidden">
-                                <div className="absolute inset-0 bg-white/50"></div>
-                                <span className="text-gray-400 font-bold text-xl relative z-10">투명</span>
-                            </div>
-                            <h3 className="font-bold text-lg text-green-600">분해 완료</h3>
-                            <p className="text-sm text-gray-500 mt-2 text-center">용액이 투명해짐 (완전 분해)</p>
-                        </MotionDiv>
-                    </div>
+                    {/* [이미지 교체 영역 3] 실험 결과 타임라인 이미지 */}
+                     <MotionDiv 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="rounded-2xl overflow-hidden shadow-lg border border-gray-100 bg-white"
+                    >
+                        <img 
+                            src="/images/methodstep/step01_experiment.png" 
+                            alt="메틸렌블루 투명도 변화 실험" 
+                            className="w-full h-auto object-cover"
+                        />
+                    </MotionDiv>
                     
                     <div className="mt-8 text-center">
                         <p className="text-sm text-gray-400">
