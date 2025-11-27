@@ -154,39 +154,34 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     count: 4,
     colorTheme: 'bg-emerald-100 text-emerald-800 border-emerald-200',
     items: [
-      { name: '네오하우스', location: '도봉구' },
-      { name: '이온크린', location: '용산구' },
-      { name: '이삭엔에스티', location: '송파구' },
-      { name: '파란공간', location: '강남구' },
-    ]
-  },
-  {
-    region: '인천',
-    count: 2,
-    colorTheme: 'bg-teal-100 text-teal-800 border-teal-200',
-    items: [
-      { name: 'PKCLASS', location: '서구' },
-      { name: '감성홈케어', location: '서구' },
-    ]
-  },
-  {
-    region: '충북/충남/세종/대전',
-    count: 5,
-    colorTheme: 'bg-green-100 text-green-800 border-green-200',
-    items: [
-      { name: '네오그린', location: '충북 청주시' },
-      { name: '슈퍼빗자루', location: '충북 청주시' },
-      { name: '에코그린', location: '세종시' },
-      { name: '청소PRO', location: '대전시' },
-      { name: '별별청소', location: '충남 서산시' },
-    ]
-  },
-  {
-    region: '전북/전남/광주',
-    count: 1,
-    colorTheme: 'bg-purple-100 text-purple-800 border-purple-200',
-    items: [
-      { name: '태양홈케어', location: '전북 군산시' },
+      { 
+        name: '네오하우스', 
+        location: '도봉구', 
+        representative: '이수익', 
+        contact: '010-2224-5366', 
+        items: '새집증후군, 입주청소, 줄눈, 나노코팅, 커튼' 
+      },
+      { 
+        name: '이온크린', 
+        location: '용산구', 
+        representative: '윤승병', 
+        contact: '010-8819-0526', 
+        items: '새집증후군, 준공청소, 줄눈, 나노코팅, 방충망' 
+      },
+      { 
+        name: '이삭엔에스티', 
+        location: '송파구', 
+        representative: '장양순', 
+        contact: '010-6321-3217', 
+        items: '새집증후군' 
+      },
+      { 
+        name: '파란공간', 
+        location: '강남구', 
+        representative: '김민우', 
+        contact: '010-3199-7859', 
+        items: '새집증후군, 입주청소' 
+      },
     ]
   },
   {
@@ -194,16 +189,139 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     count: 10,
     colorTheme: 'bg-blue-100 text-blue-800 border-blue-200',
     items: [
-      { name: 'NST힐링하우스', location: '남양주' },
-      { name: '스토리샵', location: '남양주' },
-      { name: '네오홈디자인', location: '남양주' },
-      { name: '온케어 홈케어', location: '의왕시' },
-      { name: 'THE CLASS', location: '시흥시' },
-      { name: '성실깔끄미', location: '김포시' },
-      { name: '숲속이야기(경기)', location: '파주시' },
-      { name: '청소남자', location: '파주시' },
-      { name: '아이앤아이', location: '오산시' },
-      { name: '(주)영우', location: '의정부시' },
+      { 
+        name: 'NST힐링하우스', 
+        location: '남양주시', 
+        representative: '윤홍규', 
+        contact: '010-5653-3789', 
+        items: '새집증후군, 방충망, 음식물처리기' 
+      },
+      { 
+        name: '네오홈디자인', 
+        location: '남양주시', 
+        representative: '-', 
+        contact: '010-2275-1165', 
+        items: '새집증후군, 입주청소' 
+      },
+      { 
+        name: '온케어 홈케어', 
+        location: '의왕시', 
+        representative: '김지혜', 
+        contact: '010-4941-2600', 
+        items: '새집증후군, 입주청소' 
+      },
+      { 
+        name: 'THE CLASS', 
+        location: '시흥시', 
+        representative: '김주희', 
+        contact: '010-7608-4116', 
+        items: '새집증후군, 입주청소, 나노코팅' 
+      },
+      { 
+        name: '성실깔끄미', 
+        location: '김포시', 
+        representative: '고승환', 
+        contact: '010-9275-5421', 
+        items: '새집증후군, 입주청소, 줄눈, 나노코팅' 
+      },
+      { 
+        name: '숲속이야기(경기)', 
+        location: '파주시', 
+        representative: '정용호', 
+        contact: '010-7257-0422', 
+        items: '새집증후군, 입주청소' 
+      },
+      { 
+        name: '스토리샵', 
+        location: '남양주시', 
+        representative: '임창호', 
+        contact: '010-6215-2476', 
+        items: '새집증후군, 방역(먼지다듬이 등)' 
+      },
+      { 
+        name: '아이앤아이', 
+        location: '오산시', 
+        representative: '남기윤', 
+        contact: '010-3177-6159', 
+        items: '새집증후군, 음식물처리기' 
+      },
+      { 
+        name: '(주)영우', 
+        location: '의정부시', 
+        representative: '김환', 
+        contact: '010-9187-9128', 
+        items: '새집증후군, 음식물처리기' 
+      },
+      { 
+        name: '청소남자 C&M', 
+        location: '파주시', 
+        representative: '민경수, 임성혁', 
+        contact: '010-8186-0027, 010-6689-4180', 
+        items: '새집증후군, 입주청소, 줄눈, 코팅' 
+      },
+    ]
+  },
+  {
+    region: '인천',
+    count: 2,
+    colorTheme: 'bg-teal-100 text-teal-800 border-teal-200',
+    items: [
+      { 
+        name: 'PK CLASS', 
+        location: '서구', 
+        representative: '박수지', 
+        contact: '010-6598-8801', 
+        items: '새집증후군, 입주청소, 나노코팅, 방역' 
+      },
+      { 
+        name: '감성홈케어', 
+        location: '서구', 
+        representative: '이희숙', 
+        contact: '010-4301-5511', 
+        items: '새집증후군, 입주청소, 줄눈' 
+      },
+    ]
+  },
+  {
+    region: '충북/충남/세종/대전',
+    count: 5,
+    colorTheme: 'bg-green-100 text-green-800 border-green-200',
+    items: [
+      { 
+        name: '네오그린', 
+        location: '충북 청주시', 
+        representative: '본사 직영', 
+        contact: '010-9540-1035', 
+        items: '새집증후군' 
+      },
+      { 
+        name: '슈퍼빗자루', 
+        location: '충북 청주시', 
+        representative: '이천희', 
+        contact: '010-9417-4044', 
+        items: '새집증후군, 입주청소, 줄눈, 탄성, 나노코팅, 커튼' 
+      },
+      { 
+        name: '별별청소', 
+        location: '충남 서산시', 
+        representative: '최솔아', 
+        contact: '010-9852-5279', 
+        items: '새집증후군, 방충망, 음식물처리기' 
+      },
+      { 
+        name: '에코그린', 
+        location: '세종시', 
+        representative: '윤용훈', 
+        contact: '010-2676-1444', 
+        items: '새집증후군, 커튼' 
+      },
+      { 
+        name: '더그린', 
+        location: '대전 동구', 
+        representative: '김성중', 
+        contact: '010-8525-8270', 
+        items: '새집증후군, 입주청소, 커튼' 
+      },
     ]
   },
   {
@@ -211,8 +329,20 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     count: 2,
     colorTheme: 'bg-orange-100 text-orange-800 border-orange-200',
     items: [
-      { name: '숲속이야기', location: '경북 구미' },
-      { name: '클린868', location: '대구 달서구' },
+      { 
+        name: '숲속이야기', 
+        location: '경북 구미시', 
+        representative: '조은숙', 
+        contact: '010-4112-7386', 
+        items: '새집증후군, 입주청소, 방역(먼지다듬이 등)' 
+      },
+      { 
+        name: '클린868', 
+        location: '대구 달서구', 
+        representative: '김진영', 
+        contact: '010-9165-7026', 
+        items: '새집증후군, 입주청소, 줄눈' 
+      },
     ]
   },
   {
@@ -220,7 +350,27 @@ export const BRANCH_REGIONS: BranchRegion[] = [
     count: 1,
     colorTheme: 'bg-red-100 text-red-800 border-red-200',
     items: [
-      { name: 'ERUDA', location: '부산 해운대' },
+      { 
+        name: 'ERUDA C//W 부산해운대점', 
+        location: '부산 해운대구', 
+        representative: '김회상(지점장)', 
+        contact: '010-8924-6030', 
+        items: '새집증후군, 입주청소' 
+      },
+    ]
+  },
+  {
+    region: '전북/전남/광주',
+    count: 1,
+    colorTheme: 'bg-purple-100 text-purple-800 border-purple-200',
+    items: [
+      { 
+        name: '태양홈케어', 
+        location: '전북 군산시', 
+        representative: '고영민', 
+        contact: '010-3676-7363', 
+        items: '새집증후군, 방충망' 
+      },
     ]
   },
 ];
