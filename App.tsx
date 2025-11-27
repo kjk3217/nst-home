@@ -15,22 +15,39 @@ import Footer from './components/Footer';
 import RecruitPage from './components/RecruitPage';
 import BranchesPage from './components/BranchesPage';
 
-// [수정] 새로운 페이지 컴포넌트 import (실제 파일 경로에 맞게 조정 필요)
 import OneStopPage from './components/OneStopPage';
 import TrackRecordPage from './components/TrackRecordPage';
 import TechnologyPage from './components/TechnologyPage';
 
-// [수정] PageType import
 import { PageType } from './types';
 
 const App: React.FC = () => {
-  // [수정] 초기 상태 타입 명시
   const [currentPage, setCurrentPage] = useState<PageType>('home');
+  // [추가] 돌아갈 섹션 위치를 저장할 state
+  const [targetSection, setTargetSection] = useState<string | null>(null);
 
-  // Scroll to top when page changes
+  // [수정] 페이지 변경 및 타겟 섹션 이동 처리
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [currentPage]);
+    // 타겟 섹션이 있고, 현재 페이지가 home이면 해당 위치로 이동
+    if (currentPage === 'home' && targetSection) {
+      setTimeout(() => {
+        const element = document.getElementById(targetSection);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' }); // 부드럽게 스크롤
+        }
+        setTargetSection(null); // 이동 후 타겟 초기화
+      }, 100); // 렌더링 시간을 고려해 약간의 딜레이
+    } else {
+      // 그 외의 경우(일반 페이지 이동)에는 맨 위로 이동
+      window.scrollTo(0, 0);
+    }
+  }, [currentPage, targetSection]);
+
+  // [추가] 서브 페이지에서 '메인으로 돌아가기'를 눌렀을 때 호출할 함수
+  const handleBackToReason = () => {
+    setCurrentPage('home');
+    setTargetSection('reason'); // 'reason' 섹션(ReasonSection)으로 이동하도록 예약
+  };
 
   const renderContent = () => {
     switch (currentPage) {
@@ -39,20 +56,20 @@ const App: React.FC = () => {
       case 'branches':
         return <BranchesPage />;
       
-      // [수정] 서브 페이지 케이스 추가
+      // [수정] 서브 페이지들의 onBack에 handleBackToReason 함수 연결
       case 'one-stop':
-        return <OneStopPage onBack={() => setCurrentPage('home')} />;
+        return <OneStopPage onBack={handleBackToReason} />;
       case 'track-record':
-        return <TrackRecordPage onBack={() => setCurrentPage('home')} />;
+        return <TrackRecordPage onBack={handleBackToReason} />;
       case 'technology':
-        return <TechnologyPage onBack={() => setCurrentPage('home')} />;
+        return <TechnologyPage onBack={handleBackToReason} />;
         
       case 'home':
       default:
         return (
           <>
             <ProblemSection />
-            {/* [수정] ReasonSection에 네비게이션 함수 전달 */}
+            {/* ReasonSection에 네비게이션 함수 전달 */}
             <ReasonSection onNavigate={(page) => setCurrentPage(page)} />
             <StatsSection />
             <MethodSection />
