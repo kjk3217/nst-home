@@ -40,7 +40,7 @@ const ProblemSection: React.FC = () => {
               설레는 새 집이<br className="md:hidden" /> 
               <span className="relative inline-block px-2">
                 <span className="absolute inset-0 bg-red-500/10 -skew-x-6 transform"></span>
-                <span className="relative text-red-600">가족의 건강을 위협</span>
+                <span className="relative text-red-600">가족의 건강을 위협!</span>
               </span>
 
             </h2>
