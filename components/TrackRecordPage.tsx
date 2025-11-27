@@ -15,7 +15,7 @@ const MotionDiv = motion.div as any;
 
 const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   
-  // Animation Variants
+  // ... (Animation Variants 코드는 그대로 유지) ...
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -32,20 +32,20 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
-      {/* 1. Hero Section: 압도적 스케일 강조 */}
+      {/* 1. Hero Section */}
       <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
-        {/* Background: 건설 현장의 웅장함 */}
-        <div 
+        {/* ... (Hero 배경 및 내용은 그대로 유지) ... */}
+         <div 
           className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ backgroundImage: `url(${ASSETS.reason2})` }} 
         >
-          {/* Dark Overlay with Blue tint for Trust */}
           <div className="absolute inset-0 bg-slate-900/70 mix-blend-multiply" />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
         </div>
 
         <div className="container mx-auto px-6 relative z-10 text-center pt-20">
-            <MotionDiv
+             {/* ... (Hero 텍스트 내용 그대로) ... */}
+             <MotionDiv
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
@@ -66,8 +66,10 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         </div>
       </section>
 
-      {/* 2. Main Content */}
-      <section className="pb-24 -mt-10 relative z-20">
+      {/* 2. Main Content [수정됨] */}
+      {/* 기존 className="pb-24 -mt-10 relative z-20" 에서 */}
+      {/* -> rounded-t-[2.5rem], bg-white, py-20 등을 추가하여 디자인 통일 */}
+      <section className="py-20 bg-white -mt-10 rounded-t-[2.5rem] relative z-20 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
         <div className="container mx-auto px-6">
             
             <button 
@@ -80,8 +82,10 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* Section 2-1: Definition & Value (PDF Page 06 - 3 Key Boxes) */}
+            {/* ... (이하 콘텐츠 내용은 그대로 유지) ... */}
+            {/* Section 2-1: Definition & Value */}
             <div className="mb-24">
+               {/* ... */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
                         왜 <span className="text-nst-teal">'전세대 일괄 시공'</span>이 중요할까요?
@@ -90,16 +94,16 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         단순히 많이 하는 것이 아닙니다. 기술력과 신뢰가 없으면 불가능한 영역입니다.
                     </p>
                 </div>
-
-                <MotionDiv 
+                {/* ... (Cards) ... */}
+                 <MotionDiv 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-8"
                 >
-                    {/* Card 1: 의미 */}
-                    <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
+                    {/* ... Card items ... */}
+                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
                             <FileCheck size={32} />
                         </div>
@@ -108,9 +112,7 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             신축 아파트 전 세대에 일괄 시공되었다는 것은, 까다로운 실내공기질 관리 기준에 따라 공정 시험법으로 유해물질 제거 성능을 <span className="font-bold text-blue-600">객관적으로 입증</span>받았음을 의미합니다.
                         </p>
                     </MotionDiv>
-
-                    {/* Card 2: 신뢰도 */}
-                    <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-nst-teal hover:-translate-y-2 transition-transform duration-300 relative">
+                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-nst-teal hover:-translate-y-2 transition-transform duration-300 relative">
                         <div className="absolute top-0 right-0 p-4 opacity-5">
                             <Quote size={60} />
                         </div>
@@ -122,8 +124,6 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             수십 년간 축적된 엔에스티의 기술력과 대규모 프로젝트 관리 능력은 건설사들에게 높은 평가를 받으며, 이는 곧 <span className="font-bold text-nst-teal">건축물의 가치 상승</span>과 입주민 만족도로 이어집니다.
                         </p>
                     </MotionDiv>
-
-                    {/* Card 3: 파트너십 */}
                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
                             <Handshake size={32} />
@@ -135,10 +135,11 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     </MotionDiv>
                 </MotionDiv>
             </div>
-
-            {/* Section 2-2: Visual Proof (PDF Page 07 - Banners on Buildings) */}
-            <div className="mb-24 bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
-                 {/* Decorative background elements */}
+            
+            {/* ... (나머지 섹션들 그대로 유지) ... */}
+             <div className="mb-24 bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
+                 {/* ... */}
+                  {/* Decorative background elements */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-nst-teal opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
                 
                 <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
@@ -185,7 +186,6 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </div>
             </div>
 
-            {/* Section 2-3: Bottom Summary (PDF Page 07 Bottom Green Boxes) */}
             <div className="grid md:grid-cols-2 gap-6">
                 <MotionDiv 
                     initial={{ opacity: 0, x: -20 }}
