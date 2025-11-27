@@ -16,6 +16,7 @@ const MotionDiv = motion.div as any;
 
 const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
+  // ... (Animation Variants 유지) ...
   const fadeInUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0 }
@@ -24,9 +25,10 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
-      {/* 1. Hero Section: 20년 노하우 & 표준 기술 강조 */}
+      {/* 1. Hero Section */}
       <section className="relative h-[55vh] min-h-[450px] flex items-center justify-center overflow-hidden">
-        <div 
+        {/* ... (Hero 배경 및 내용 유지) ... */}
+         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason3})` }} 
         >
@@ -58,8 +60,10 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         </div>
       </section>
 
-      {/* 2. Main Content */}
-      <section className="pb-24 -mt-10 relative z-20">
+      {/* 2. Main Content [수정됨] */}
+      {/* 기존 className="pb-24 -mt-10 relative z-20" 에서 */}
+      {/* -> rounded-t-[2.5rem], bg-white, py-20 추가 */}
+      <section className="py-20 bg-white -mt-10 rounded-t-[2.5rem] relative z-20 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
         <div className="container mx-auto px-6">
             
             <button 
@@ -72,7 +76,8 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* Section 2-1: The Logic (Comic Content Reinterpreted) */}
+            {/* ... (이하 콘텐츠 내용은 그대로 유지) ... */}
+             {/* Section 2-1: The Logic (Comic Content Reinterpreted) */}
             {/* "왜 3단계여야 할까요?" - 기존/미래 발생 오염물질 논리 시각화 */}
             <div className="mb-24">
                  <div className="text-center mb-16">
@@ -274,6 +279,7 @@ const TechnologyPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeInUp}
                 className="mt-24 p-8 md:p-12 bg-slate-900 rounded-3xl text-center relative overflow-hidden"
              >
+                 {/* ... (Bottom Conclusion 내용 유지) ... */}
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 via-nst-teal to-green-500"></div>
                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-6">
                     그게 바로 20년 노하우가 집약된<br/>
