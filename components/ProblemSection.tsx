@@ -41,8 +41,7 @@ const ProblemSection: React.FC = () => {
               <span className="relative inline-block px-2">
                 <span className="absolute inset-0 bg-red-500/10 -skew-x-6 transform"></span>
                 <span className="relative text-red-600">가족의 건강을 위협</span>
-              </span>
-              하고 있습니다.
+
             </h2>
             <p className="text-slate-600 text-lg md:text-xl font-medium leading-relaxed break-keep">
               새 가구와 자재에서 뿜어져 나오는 <span className="font-bold text-slate-900 underline decoration-red-400 decoration-2 underline-offset-4">1급 발암물질</span>.
