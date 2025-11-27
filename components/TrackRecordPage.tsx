@@ -15,7 +15,6 @@ const MotionDiv = motion.div as any;
 
 const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   
-  // ... (Animation Variants 코드는 그대로 유지) ...
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -29,49 +28,62 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     visible: { opacity: 1, y: 0 }
   };
 
+  // [수정] 다른 페이지와 동일한 애니메이션 효과 적용
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <div className="bg-white min-h-screen overflow-x-hidden">
       
-      {/* 1. Hero Section */}
-      <section className="relative h-[60vh] min-h-[500px] flex items-center justify-center">
-        {/* ... (Hero 배경 및 내용은 그대로 유지) ... */}
-         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+      {/* 1. Hero Section [디자인 통일 수정] */}
+      {/* 높이를 60vh -> 55vh로 조정하고, min-h를 450px로 통일 */}
+      <section className="relative h-[55vh] min-h-[450px] flex items-center justify-center overflow-hidden">
+        
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${ASSETS.reason2})` }} 
         >
-          <div className="absolute inset-0 bg-slate-900/70 mix-blend-multiply" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white" />
+           {/* [수정] 배경 오버레이 변경: 기존의 'to-white' 그라데이션을 제거하고 
+               다른 페이지처럼 어두운 톤으로 통일하여 텍스트 가독성 확보 */}
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 to-slate-800/80" />
         </div>
 
-        <div className="container mx-auto px-6 relative z-10 text-center pt-20">
-             {/* ... (Hero 텍스트 내용 그대로) ... */}
+        <div className="container mx-auto px-6 relative z-10 text-center pt-10">
              <MotionDiv
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                initial="hidden"
+                animate="visible"
+                variants={fadeInUp} // variants 통일
                 transition={{ duration: 0.8 }}
             >
-                <div className="inline-flex items-center gap-2 bg-yellow-500/20 text-yellow-600 border border-yellow-500/50 px-4 py-1.5 rounded-full font-bold text-sm mb-6 backdrop-blur-md">
+                {/* [수정] 뱃지 스타일 통일: Glassmorphism 효과 적용 */}
+                <div className="inline-flex items-center gap-2 bg-white/10 border border-yellow-400/50 text-yellow-400 px-4 py-1.5 rounded-full font-bold text-sm mb-6 backdrop-blur-md">
                     <Trophy size={16} />
                     <span>NST SYSTEM 02</span>
                 </div>
-                <h1 className="text-4xl md:text-6xl font-black text-slate-800 mb-6 leading-tight drop-shadow-sm">
+
+                {/* [수정] 타이틀 색상 변경: Slate-800 -> White (어두운 배경 위 흰 글씨) */}
+                <h1 className="text-4xl md:text-6xl font-black text-white mb-6 leading-tight">
                     대형 건설사가 선택한<br />
                     <span className="text-nst-teal">전세대 일괄 시공 기술</span>
                 </h1>
-                <p className="text-slate-600 text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed">
+
+                {/* [수정] 본문 텍스트 색상 변경: Slate-600 -> Gray-200/300 */}
+                <p className="text-gray-200 text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
                     국내 주요 건설사들과의 긴밀한 협력을 통해<br className="hidden md:block"/>
-                    수많은 대규모 프로젝트에서 <span className="text-nst-teal font-bold bg-teal-50 px-1">업계 표준</span>을 만들어왔습니다.
+                    수많은 대규모 프로젝트에서 <span className="text-white font-bold">업계 표준</span>을 만들어왔습니다.
                 </p>
             </MotionDiv>
         </div>
       </section>
 
-      {/* 2. Main Content [수정됨] */}
-      {/* 기존 className="pb-24 -mt-10 relative z-20" 에서 */}
-      {/* -> rounded-t-[2.5rem], bg-white, py-20 등을 추가하여 디자인 통일 */}
+      {/* 2. Main Content */}
       <section className="py-20 bg-white -mt-10 rounded-t-[2.5rem] relative z-20 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.1)]">
         <div className="container mx-auto px-6">
             
+            {/* 뒤로가기 버튼 */}
             <button 
                 onClick={onBack} 
                 className="group flex items-center gap-2 text-gray-500 hover:text-nst-dark font-bold mb-12 transition-colors relative z-30"
@@ -82,27 +94,25 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 <span>메인으로 돌아가기</span>
             </button>
 
-            {/* ... (이하 콘텐츠 내용은 그대로 유지) ... */}
             {/* Section 2-1: Definition & Value */}
             <div className="mb-24">
-               {/* ... */}
                 <div className="text-center mb-16">
                     <h2 className="text-3xl font-bold text-nst-dark mb-4">
                         왜 <span className="text-nst-teal">'전세대 일괄 시공'</span>이 중요할까요?
                     </h2>
-                    <p className="text-gray-500">
+                    <p className="text-gray-500 max-w-2xl mx-auto">
                         단순히 많이 하는 것이 아닙니다. 기술력과 신뢰가 없으면 불가능한 영역입니다.
                     </p>
                 </div>
-                {/* ... (Cards) ... */}
-                 <MotionDiv 
+
+                <MotionDiv 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true }}
                     className="grid grid-cols-1 md:grid-cols-3 gap-8"
                 >
-                    {/* ... Card items ... */}
+                    {/* Card 1 */}
                      <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-600 mb-6">
                             <FileCheck size={32} />
@@ -112,6 +122,8 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             신축 아파트 전 세대에 일괄 시공되었다는 것은, 까다로운 실내공기질 관리 기준에 따라 공정 시험법으로 유해물질 제거 성능을 <span className="font-bold text-blue-600">객관적으로 입증</span>받았음을 의미합니다.
                         </p>
                     </MotionDiv>
+                    
+                    {/* Card 2 (Highlight) */}
                      <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border-t-4 border-nst-teal hover:-translate-y-2 transition-transform duration-300 relative">
                         <div className="absolute top-0 right-0 p-4 opacity-5">
                             <Quote size={60} />
@@ -124,6 +136,8 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             수십 년간 축적된 엔에스티의 기술력과 대규모 프로젝트 관리 능력은 건설사들에게 높은 평가를 받으며, 이는 곧 <span className="font-bold text-nst-teal">건축물의 가치 상승</span>과 입주민 만족도로 이어집니다.
                         </p>
                     </MotionDiv>
+
+                    {/* Card 3 */}
                     <MotionDiv variants={itemVariants} className="bg-white p-8 rounded-3xl shadow-lg border border-gray-100 hover:-translate-y-2 transition-transform duration-300">
                         <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center text-orange-600 mb-6">
                             <Handshake size={32} />
@@ -136,10 +150,9 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                 </MotionDiv>
             </div>
             
-            {/* ... (나머지 섹션들 그대로 유지) ... */}
+             {/* Section 2-2: Project Reference Banner */}
              <div className="mb-24 bg-slate-900 text-white rounded-[2.5rem] p-8 md:p-16 overflow-hidden relative">
-                 {/* ... */}
-                  {/* Decorative background elements */}
+                {/* Decorative background elements */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-nst-teal opacity-10 rounded-full blur-3xl transform translate-x-1/2 -translate-y-1/2"></div>
                 
                 <div className="relative z-10 flex flex-col md:flex-row gap-12 items-center">
@@ -157,7 +170,6 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             우리의 기술력이 입주민에게 약속하는 <span className="text-white font-bold underline decoration-nst-teal underline-offset-4">품질 보증서</span>와 같습니다.
                         </p>
                         
-                        {/* Stats in dark mode */}
                         <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
                             <div>
                                 <div className="text-4xl font-bold text-white mb-1">1,018<span className="text-nst-teal text-2xl">+</span></div>
@@ -170,22 +182,23 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         </div>
                     </div>
 
-                    {/* Image Grid - Placeholder for Banner Images */}
+                    {/* Image Grid */}
                     <div className="md:w-1/2 grid grid-cols-2 gap-4">
-                        {/* [IMAGE_PLACEHOLDER] 여기에 'track_banner_01.jpg' 등 현수막 사진이 들어가면 좋습니다. */}
                         <div className="bg-white/10 rounded-2xl h-48 md:h-64 overflow-hidden border border-white/10 relative group">
-                            <img src="/images/reason/track_banner_01.jpg" alt="Building Banner 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
+                            {/* [IMAGE_CHECK] 현수막 이미지 (기존 경로 유지) */}
+                            <img src="/images/reason/track_banner_01.jpg" alt="Building Banner 1" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                             <div className="absolute bottom-4 left-4 font-bold text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">시공 현장 전경</div>
                         </div>
-                         {/* [IMAGE_PLACEHOLDER] */}
                         <div className="bg-white/10 rounded-2xl h-48 md:h-64 overflow-hidden border border-white/10 relative group mt-8">
-                            <img src={ASSETS.step1} alt="Building Banner 2" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60 group-hover:opacity-100" />
+                             {/* [IMAGE_CHECK] 시공 장면 이미지 (기존 경로 유지) */}
+                            <img src={ASSETS.step1} alt="Building Banner 2" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80 group-hover:opacity-100" />
                             <div className="absolute bottom-4 left-4 font-bold text-sm bg-black/50 px-2 py-1 rounded backdrop-blur-sm">NST 시공 인증</div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            {/* Section 2-3: Bottom Features */}
             <div className="grid md:grid-cols-2 gap-6">
                 <MotionDiv 
                     initial={{ opacity: 0, x: -20 }}
