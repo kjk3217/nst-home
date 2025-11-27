@@ -15,9 +15,16 @@ import Footer from './components/Footer';
 import RecruitPage from './components/RecruitPage';
 import BranchesPage from './components/BranchesPage';
 
-type PageType = 'home' | 'recruit' | 'branches';
+// [수정] 새로운 페이지 컴포넌트 import (실제 파일 경로에 맞게 조정 필요)
+import OneStopPage from './components/OneStopPage';
+import TrackRecordPage from './components/TrackRecordPage';
+import TechnologyPage from './components/TechnologyPage';
+
+// [수정] PageType import
+import { PageType } from './types';
 
 const App: React.FC = () => {
+  // [수정] 초기 상태 타입 명시
   const [currentPage, setCurrentPage] = useState<PageType>('home');
 
   // Scroll to top when page changes
@@ -31,12 +38,22 @@ const App: React.FC = () => {
         return <RecruitPage />;
       case 'branches':
         return <BranchesPage />;
+      
+      // [수정] 서브 페이지 케이스 추가
+      case 'one-stop':
+        return <OneStopPage onBack={() => setCurrentPage('home')} />;
+      case 'track-record':
+        return <TrackRecordPage onBack={() => setCurrentPage('home')} />;
+      case 'technology':
+        return <TechnologyPage onBack={() => setCurrentPage('home')} />;
+        
       case 'home':
       default:
         return (
           <>
             <ProblemSection />
-            <ReasonSection />
+            {/* [수정] ReasonSection에 네비게이션 함수 전달 */}
+            <ReasonSection onNavigate={(page) => setCurrentPage(page)} />
             <StatsSection />
             <MethodSection />
             <EffectivenessSection />
@@ -51,12 +68,10 @@ const App: React.FC = () => {
   };
 
   return (
-    // [핵심 수정] overflow-x-hidden 추가:
-    // 전체 레이아웃의 가로 넘침을 강제로 숨겨서, 화면 너비를 모바일 기기 너비에 딱 맞춥니다.
-    // 이렇게 하면 Hero 컴포넌트의 '중앙(left-1/2)' 계산이 정확해져서 화살표가 정중앙에 오게 됩니다.
     <div className="min-h-screen bg-white overflow-x-hidden">
       <Navbar onNavigateHome={() => setCurrentPage('home')} />
       <main>
+        {/* Hero는 home일 때만 보여줌 */}
         {currentPage === 'home' && (
           <Hero 
             onNavigateRecruit={() => setCurrentPage('recruit')} 
