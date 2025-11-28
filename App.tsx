@@ -20,7 +20,7 @@ import OneStopPage from './components/OneStopPage';
 import TrackRecordPage from './components/TrackRecordPage';
 import TechnologyPage from './components/TechnologyPage';
 
-// [추가] 공법 상세 페이지 import (파일 생성 완료 전제)
+// 공법 상세 페이지 import
 import MethodStep1Page from './components/MethodStep1Page';
 import MethodStep2Page from './components/MethodStep2Page';
 import MethodStep3Page from './components/MethodStep3Page';
@@ -31,31 +31,85 @@ const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<PageType>('home');
   const [targetSection, setTargetSection] = useState<string | null>(null);
 
+  // [추가 1] 브라우저 뒤로가기(PopState) 감지 및 처리
   useEffect(() => {
-    // 타겟 섹션이 있고, 현재 페이지가 home이면 해당 위치로 이동
-    if (currentPage === 'home' && targetSection) {
-      setTimeout(() => {
-        const element = document.getElementById(targetSection);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-        setTargetSection(null);
-      }, 100);
+    // 초기 로딩 시 현재 상태(Home)를 히스토리에 기록
+    window.history.replaceState({ page: 'home' }, '', window.location.pathname);
+
+    const handlePopState = (event: PopStateEvent) => {
+      // 뒤로가기 시 state가 있으면 해당 페이지로, 없으면 home으로
+      if (event.state && event.state.page) {
+        setCurrentPage(event.state.page);
+      } else {
+        setCurrentPage('home');
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // [추가 2] 페이지 이동 함수 (History 기록 + 스크롤 저장)
+  const navigateTo = (page: PageType, sectionId?: string) => {
+    // 메인에서 다른 페이지로 갈 때, 현재 메인 스크롤 위치 저장
+    if (currentPage === 'home' && page !== 'home') {
+      sessionStorage.setItem('mainScrollY', window.scrollY.toString());
+    }
+
+    // 브라우저 히스토리에 새 기록 추가 (주소창 변경)
+    if (page === 'home') {
+        window.history.pushState({ page }, '', '/'); 
     } else {
+        window.history.pushState({ page }, '', `/#${page}`);
+    }
+    
+    setCurrentPage(page);
+
+    if (sectionId) {
+      setTargetSection(sectionId);
+    } else {
+      // 새 페이지는 최상단에서 시작
+      window.scrollTo(0, 0);
+    }
+  };
+
+  // [추가 3] 페이지 변경 시 스크롤 처리 (복원 or 초기화)
+  useEffect(() => {
+    if (currentPage === 'home') {
+      if (targetSection) {
+        // 1. 특정 섹션으로 이동해야 하는 경우 (예: 서브페이지에서 '돌아가기' 버튼 클릭)
+        setTimeout(() => {
+          const element = document.getElementById(targetSection);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+          }
+          setTargetSection(null);
+        }, 100);
+      } else {
+        // 2. 그냥 홈으로 온 경우 (브라우저 뒤로가기 등) -> 저장된 스크롤 위치 복원
+        const savedScroll = sessionStorage.getItem('mainScrollY');
+        if (savedScroll) {
+          setTimeout(() => {
+            window.scrollTo({ top: parseInt(savedScroll), behavior: 'auto' });
+          }, 50);
+        } else {
+            window.scrollTo(0, 0);
+        }
+      }
+    } else {
+      // 서브 페이지는 항상 최상단
       window.scrollTo(0, 0);
     }
   }, [currentPage, targetSection]);
 
-  // Reason 섹션(메인 기술력 소개)으로 돌아가기
+  // Reason 섹션(메인 기술력 소개)으로 돌아가기 (navigateTo 사용)
   const handleBackToReason = () => {
-    setCurrentPage('home');
-    setTargetSection('reason');
+    navigateTo('home', 'reason');
   };
 
-  // [추가] Method 섹션(3단계 공법)으로 돌아가기
+  // Method 섹션(3단계 공법)으로 돌아가기 (navigateTo 사용)
   const handleBackToMethod = () => {
-    setCurrentPage('home');
-    setTargetSection('method');
+    navigateTo('home', 'method');
   };
 
   const renderContent = () => {
@@ -73,7 +127,7 @@ const App: React.FC = () => {
       case 'technology':
         return <TechnologyPage onBack={handleBackToReason} />;
 
-      // [추가] Method 관련 서브 페이지
+      // Method 관련 서브 페이지
       case 'method-step1':
         return <MethodStep1Page onBack={handleBackToMethod} />;
       case 'method-step2':
@@ -86,10 +140,10 @@ const App: React.FC = () => {
         return (
           <>
             <ProblemSection />
-            <ReasonSection onNavigate={(page) => setCurrentPage(page)} />
+            {/* onNavigate에 setCurrentPage 대신 navigateTo 전달 */}
+            <ReasonSection onNavigate={(page) => navigateTo(page)} />
             <StatsSection />
-            {/* [수정] MethodSection에 네비게이션 함수 전달 */}
-            <MethodSection onNavigate={(page) => setCurrentPage(page)} />
+            <MethodSection onNavigate={(page) => navigateTo(page)} />
             <EffectivenessSection />
             <VideoSection />
             <PortfolioSection />
@@ -103,13 +157,14 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white overflow-x-hidden">
-      <Navbar onNavigateHome={() => setCurrentPage('home')} />
+      {/* Navbar 로고 클릭 시 홈으로 이동 */}
+      <Navbar onNavigateHome={() => navigateTo('home')} />
       <main>
         {/* Hero는 home일 때만 보여줌 */}
         {currentPage === 'home' && (
           <Hero 
-            onNavigateRecruit={() => setCurrentPage('recruit')} 
-            onNavigateBranches={() => setCurrentPage('branches')} 
+            onNavigateRecruit={() => navigateTo('recruit')} 
+            onNavigateBranches={() => navigateTo('branches')} 
           />
         )}
         
