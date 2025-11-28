@@ -97,42 +97,42 @@ export const BLOG_MAIN_URL = "https://blog.naver.com/nst-pro";
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
   { 
     id: 1, 
-    category: 'Seoul', 
+    category: '경기', 
     image: ASSETS.port1, 
     title: '경기도 철원군 석미아데나 퍼스티어',
     url: 'https://blog.naver.com/nst-pro/224036720678 ' // [수정필요] 해당 시공사례 블로그 주소
   },
   { 
     id: 2, 
-    category: 'Busan', 
+    category: '경기', 
     image: ASSETS.port2, 
     title: '경기도 인스빌 1단지',
     url: 'https://blog.naver.com/nst-pro/224038632490' // [수정필요]
   },
   { 
     id: 3, 
-    category: 'Incheon', 
+    category: '경기', 
     image: ASSETS.port3, 
     title: '경기도 쌍용예가 충무',
     url: 'https://blog.naver.com/nst-pro/224063385367' // [수정필요]
   },
   { 
     id: 4, 
-    category: 'Seoul', 
+    category: '경기기', 
     image: ASSETS.port4, 
     title: '경기도 180평 단독주택',
     url: 'https://blog.naver.com/nst-pro/224090590196' // [수정필요]
   },
   { 
     id: 5, 
-    category: 'Seoul', 
+    category: '서울', 
     image: ASSETS.port5, 
     title: '서울 아파트',
     url: 'https://blog.naver.com/nst-pro/224090590196' // [수정필요]
   },
   { 
     id: 6, 
-    category: 'Busan', 
+    category: '기타', 
     image: ASSETS.port6, 
     title: '부산 아파트',
     url: 'https://blog.naver.com/nst-pro/224090590196' // [수정필요]
