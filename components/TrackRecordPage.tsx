@@ -170,8 +170,8 @@ const TrackRecordPage: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                         
                         <div className="grid grid-cols-2 gap-6 pt-8 border-t border-white/10">
                             <div>
-                                <div className="text-4xl font-bold text-white mb-1">1,018<span className="text-nst-teal text-2xl">+</span></div>
-                                <div className="text-gray-400 text-sm">누적 시공 단지</div>
+                                <div className="text-4xl font-bold text-white mb-1">57,000<span className="text-nst-teal text-2xl">+</span></div>
+                                <div className="text-gray-400 text-sm">누적 시공량</div>
                             </div>
                             <div>
                                 <div className="text-4xl font-bold text-white mb-1">Top<span className="text-nst-teal text-2xl">Tier</span></div>
