@@ -10,7 +10,6 @@ const Footer: React.FC = () => {
           {/* Brand Info */}
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-2 mb-6 text-white">
-              <div className="w-8 h-8 bg-white text-nst-teal rounded flex items-center justify-center font-bold text-lg">N</div>
               <span className="text-2xl font-bold">(주)엔에스티</span>
             </div>
             <p className="text-sm leading-relaxed mb-8 max-w-md">
