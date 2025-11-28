@@ -4,7 +4,7 @@ import { PORTFOLIO_ITEMS, BLOG_MAIN_URL } from '../constants'; // [수정] BLOG_
 
 const MotionDiv = motion.div as any;
 
-const filters = ['All', 'Seoul', 'Busan', 'Incheon'];
+const filters = ['전체', '서울', '경기', '기타'];
 
 const PortfolioSection: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('All');
