@@ -26,14 +26,11 @@ const EffectivenessSection: React.FC = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            {/* [수정 1] 배지 텍스트 변경: 2025 WINNER -> 2025 대한민국 환경부 대상 */}
-            <div className="absolute -top-6 -left-6 z-20 bg-yellow-500 text-white font-bold px-4 py-2 rounded shadow-lg">
-              2025 대한민국 환경부 대상
-            </div>
+            
             <img 
               src={ASSETS.awards} 
               alt="Award Ceremony" 
-              className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
+              className="rounded-2xl shadow-2xl w-full h-[600px] object-cover"
             />
             {/* Overlay Gradient */}
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/40 to-transparent"></div>
