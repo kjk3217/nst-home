@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PORTFOLIO_ITEMS } from '../constants';
+import { PORTFOLIO_ITEMS, BLOG_MAIN_URL } from '../constants'; // [수정] BLOG_MAIN_URL import 추가
 
 const MotionDiv = motion.div as any;
 
@@ -12,6 +12,13 @@ const PortfolioSection: React.FC = () => {
   const filteredItems = activeFilter === 'All' 
     ? PORTFOLIO_ITEMS 
     : PORTFOLIO_ITEMS.filter(item => item.category === activeFilter);
+
+  // [추가] 링크 이동 핸들러
+  const handleLinkClick = (url?: string) => {
+    // 개별 주소가 있으면 그곳으로, 없으면 메인 블로그로 이동
+    const targetUrl = url || BLOG_MAIN_URL;
+    window.open(targetUrl, '_blank');
+  };
 
   return (
     <section id="portfolio" className="py-24 bg-gray-50">
@@ -57,6 +64,7 @@ const PortfolioSection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
+                onClick={() => handleLinkClick(item.url)} // [수정] 클릭 이벤트 추가
                 className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl cursor-pointer"
               >
                 <div className="aspect-[4/3] overflow-hidden">
@@ -70,7 +78,13 @@ const PortfolioSection: React.FC = () => {
                 {/* Overlay Text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-nst-dark/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <span className="text-nst-teal text-sm font-bold uppercase tracking-wider">{item.category}</span>
-                  <h3 className="text-white text-xl font-bold">{item.title}</h3>
+                  <div className="flex justify-between items-end">
+                    <h3 className="text-white text-xl font-bold">{item.title}</h3>
+                    {/* [추가] 바로가기 아이콘 힌트 */}
+                    <span className="text-white/80 text-xs border border-white/30 px-2 py-1 rounded hover:bg-white/10">
+                        블로그 보기 ↗
+                    </span>
+                  </div>
                 </div>
               </MotionDiv>
             ))}
@@ -78,7 +92,11 @@ const PortfolioSection: React.FC = () => {
         </MotionDiv>
 
         <div className="text-center mt-12">
-            <button className="text-nst-dark font-bold hover:text-nst-teal transition-colors underline decoration-2 underline-offset-4">
+            {/* [수정] 버튼 클릭 시 메인 블로그로 이동 */}
+            <button 
+                onClick={() => handleLinkClick(BLOG_MAIN_URL)}
+                className="text-nst-dark font-bold hover:text-nst-teal transition-colors underline decoration-2 underline-offset-4"
+            >
                 전체 시공 사례 더보기
             </button>
         </div>
