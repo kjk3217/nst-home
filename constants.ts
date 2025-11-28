@@ -92,13 +92,51 @@ export const STEPS: StepItem[] = [
   },
 ];
 
+export const BLOG_MAIN_URL = "https://blog.naver.com/isnst";
+
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
-  { id: 1, category: 'Seoul', image: ASSETS.port1, title: '서울 반포 래미안' },
-  { id: 2, category: 'Busan', image: ASSETS.port2, title: '부산 해운대 아이파크' },
-  { id: 3, category: 'Incheon', image: ASSETS.port3, title: '인천 송도 더샵' },
-  { id: 4, category: 'Seoul', image: ASSETS.port4, title: '서울 한남 더힐' },
-  { id: 5, category: 'Seoul', image: ASSETS.port5, title: '강남 시그니엘' },
-  { id: 6, category: 'Busan', image: ASSETS.port6, title: '부산 LCT' },
+  { 
+    id: 1, 
+    category: 'Seoul', 
+    image: ASSETS.port1, 
+    title: '서울 반포 래미안',
+    url: 'https://blog.naver.com/isnst/1111' // [수정필요] 해당 시공사례 블로그 주소
+  },
+  { 
+    id: 2, 
+    category: 'Busan', 
+    image: ASSETS.port2, 
+    title: '부산 해운대 아이파크',
+    url: 'https://blog.naver.com/isnst/2222' // [수정필요]
+  },
+  { 
+    id: 3, 
+    category: 'Incheon', 
+    image: ASSETS.port3, 
+    title: '인천 송도 더샵',
+    url: 'https://blog.naver.com/isnst/3333' // [수정필요]
+  },
+  { 
+    id: 4, 
+    category: 'Seoul', 
+    image: ASSETS.port4, 
+    title: '서울 한남 더힐',
+    url: 'https://blog.naver.com/isnst/4444' // [수정필요]
+  },
+  { 
+    id: 5, 
+    category: 'Seoul', 
+    image: ASSETS.port5, 
+    title: '강남 시그니엘',
+    url: 'https://blog.naver.com/isnst/5555' // [수정필요]
+  },
+  { 
+    id: 6, 
+    category: 'Busan', 
+    image: ASSETS.port6, 
+    title: '부산 LCT',
+    url: 'https://blog.naver.com/isnst/6666' // [수정필요]
+  },
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
